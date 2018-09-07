@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PionConfig xmlns="http://purl.org/pion/config" pion_version="tests">
+	<Server id="main-server">
+		<Port>0</Port>
+		<Restrict>/echo</Restrict>
+		<Login>/login</Login>
+		<Logout>/logout</Logout>
+		<WebService id="echo-service">
+			<Name>Echo Service</Name>
+			<Comment>Echoes the HTTP request</Comment>
+			<Plugin>EchoService</Plugin>
+			<Resource>/echo</Resource>
+		</WebService>
+		<PlatformService id="feed-service">
+			<Name>Data Feed Service</Name>
+			<Comment>Pion platform data feed service</Comment>
+			<Plugin>FeedService</Plugin>
+			<Resource>/feed</Resource>
+		</PlatformService>
+		<PlatformService id="query-service-2">
+			<Name>Query Service</Name>
+			<Comment>Accesses Reactors for queries</Comment>
+			<Plugin>QueryService</Plugin>
+			<Resource>/query2</Resource>
+		</PlatformService>
+	</Server>
+	<PlatformService id="config-service">
+		<Name>Configuration Service</Name>
+		<Comment>Pion platform configuration service</Comment>
+		<Server>main-server</Server>
+		<Plugin>ConfigService</Plugin>
+		<Resource>/config</Resource>
+		<UIDirectory>../../platform/ui</UIDirectory>
+	</PlatformService>
+	<PlatformService id="query-service">
+		<Name>Query Service</Name>
+		<Comment>Accesses Reactors for queries</Comment>
+		<Server>main-server</Server>
+		<Plugin>QueryService</Plugin>
+		<Resource>/query</Resource>
+	</PlatformService>
+</PionConfig>

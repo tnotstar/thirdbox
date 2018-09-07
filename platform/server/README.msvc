@@ -1,0 +1,28 @@
+Running pion:
+-------------
+
+NOTE: currently, the Debug_static and Release_static configurations are not supported.
+
+Make sure the following are on your path (with appropriate changes if you 
+installed anything in other than the suggested location):
+
+C:\boost-1.42.0\lib
+C:\iconv-1.9.2\bin
+C:\libxml2-2.6.30\bin
+C:\zlib-1.2.3\bin
+C:\bzip2-1.0.5\bin
+C:\icu-4.4.1\bin
+
+and for the PION_FULL configurations,
+
+C:\log4cplus-1.0.3\bin
+C:\yajl-1.0.9\bin
+
+
+To run pion.exe from the command line, run it from the project directory with 
+arguments '-c platform.xml', e.g.
+
+C:\pion-platform\platform\server>..\..\bin\debug_dll_full\pion.exe -c platform.xml
+
+To run pion.exe from within the IDE, go to pion Property Pages -> Debugging,
+and set 'Command Arguments' to: -c platform.xml

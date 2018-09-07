@@ -1,0 +1,1542 @@
+html, body {
+	width: 100%;	/* make the body expand to ... */
+	height: 100%;	/* ... fill the visible window */
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #ffffff;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	color: #333333;
+}
+
+.tundra .dijitTextBox {
+	padding: 2px;
+}
+
+.tundra .dijitButtonNode:hover {
+	padding: 0px;
+	margin:0px;
+	background:none;
+	border: 0px;
+}
+
+
+#wizard {
+	width: 650px;
+	height: 450px;
+	margin-left: auto;
+	margin-right: auto;
+	border-top: 3px solid #00acff;
+	border-bottom: 1px dotted #00acff;
+	border-left: 0px;
+	border-right: 0px;
+	margin-top: 100px;
+}
+
+#wizard.hidden {
+	display: none;
+}
+
+.wizard_menu {
+	text-align: right;
+	padding: 0 20px 0 0;
+	width: 630px;
+	margin: 0px;
+}
+
+h1.wizard_welcome {
+	font-size: 30px;
+	font-weight: bold;
+	color: #0099ff;
+}
+
+.wizard_header {
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+	padding-left: 20px;
+	width: 610px;
+}
+
+.wizard_welcome_header {
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+	padding-left: 20px;
+	margin-top: -20px;
+	width: 420px;
+	float: left;
+}
+
+.wizard_welcome_hat {
+	float: left;
+	padding-right: 20px;
+	width: 150px;
+	float: left;
+}
+
+.wizard_header_logo {
+	float: left;
+	padding-left: 20px;
+	width: 135px;
+	margin-top: -20px;
+}
+
+.wizard_header_title {
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+	width: 455px;
+}
+
+.wizard_content {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: -20px;
+}
+
+#wizard a {
+	color: #0099ff;
+	font-size: 12px;
+	text-decoration: underline;
+}
+
+.tundra .edition_button button {
+	width: 180px;
+	height: 38px;
+}
+
+.tundra .edition_button.lite button {
+	background: #ffffff url("../images/logo-pion-lite-small.png") no-repeat;
+}
+
+.tundra .edition_button.lite.dijitButtonHover button {
+	background: #ffffff url("../images/logo-pion-lite-small-on.png") no-repeat;
+}
+
+.tundra .edition_button.enterprise button {
+	background: #ffffff url("../images/logo-pion-enterprise-small.png") no-repeat;
+}
+
+.tundra .edition_button.enterprise.dijitButtonHover button {
+	background: #ffffff url("../images/logo-pion-enterprise-small-on.png") no-repeat;
+}
+
+.tundra .edition_button.core button {
+	background: #ffffff url("../images/logo-pion-core-small.png") no-repeat;
+}
+
+.tundra .edition_button.core.dijitButtonHover button {
+	background: #ffffff url("../images/logo-pion-core-small-on.png") no-repeat;
+}
+
+.tundra .edition_button.replay button {
+	background: #ffffff url("../images/logo-pion-replay-small.png") no-repeat;
+}
+
+.tundra .edition_button.replay.dijitButtonHover button {
+	background: #ffffff url("../images/logo-pion-replay-small-on.png") no-repeat;
+}
+
+.device_description {
+	margin-left: 20px;
+}
+
+.wizard_key_link {
+	font-size: 11px; 
+	padding: 3px; 
+	border: 1px dotted #cccccc; 
+	margin-right: 25px; 
+	margin-top: 5px;
+}
+
+#wizard input.port_input {
+	width: 75px;
+}
+
+#wizard .warning_box {
+	border: solid #999999 1px;
+	padding: 10px;
+	margin-top: 20px;
+}
+
+#wizard .device_list {
+	height: 225px;
+	overflow: auto;
+}
+
+#review_setup input {
+	width: 95%;
+}
+/*
+#wizard div.hidden {
+	display: none;
+}
+*/
+div.hidden {
+	display: none;
+}
+
+p.hidden {
+	display: none;
+}
+
+span.hidden {
+	display: none;
+}
+
+.invisible {
+	visibility: hidden;
+}
+
+/* Features Matrix */
+
+.features_list {
+	border-left: 1px solid #cccccc; 
+	border-right: 1px solid #cccccc; 
+	border-top: 1px solid #cccccc;
+	width: 170px;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.features_columns {
+	border-right: 1px solid #cccccc; 
+	border-top: 1px solid #cccccc;
+	text-align: center;
+	width: 125px;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+
+#counterBackground {
+	position:absolute;
+	top: 121px;
+	left: 239px;
+	z-index: 3;
+	background: #4a4a4a;
+	width: 350px;
+	height: 50px;
+	/* for IE */
+	filter:alpha(opacity=80);
+	/* CSS3 standard */
+	opacity:0.8;
+}
+
+#counterBackground.mostly_hidden {
+	width: 15px;
+}
+
+.counterTitle {
+	z-index: 4;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	width: 185px;
+	padding: 10px 0 10px 10px;
+	float: left;
+}
+
+.mostly_hidden .counterTitle {
+	display: none;
+}
+
+.counterNumbersRight {
+	z-index: 4;
+	color: #ffffff;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	width: 60px;
+	padding: 10px 10px 10px 0;
+	float: left;
+	text-align: right;
+	line-height: 1.4;
+}
+
+.mostly_hidden .counterNumbersRight {
+	display: none;
+}
+
+.counterNumbersLeft {
+	z-index: 4;
+	color: #ffffff;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 10px;
+	width: 70px;
+	padding: 10px 0 10px 0;
+	float: left;
+	text-align: right;
+	line-height: 1.4;
+}
+
+.mostly_hidden .counterNumbersLeft {
+	display: none;
+}
+
+.counterToggle {
+	width: 15px;
+	float: left;
+}
+
+#ops_toggle_button  {
+	z-index: 5;
+	width: 15px;
+	height: 50px;
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+	background-color: #000000;
+	background: url("../images/reactor-counter-toggle.png");
+}
+
+.mostly_hidden #ops_toggle_button {
+	background: url("../images/reactor-counter-toggle-in.png");
+}
+
+
+
+h1 {
+	font-size: 2.5em;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-bottom: 0px;
+}
+
+h2 {
+	font-size: 1.6em;
+	font-weight: normal;
+}
+
+h3 {
+	font-size: 1.2em;
+	margin-bottom: 0px;
+}
+
+h4 {
+	font-size: 1.0em;
+	margin-bottom: 0px;
+}
+
+a {
+	color: #333333;
+	text-decoration: none;
+}
+
+a.header {
+	color: #0099ff;
+}
+
+a.help {
+	color: red;
+}
+
+a.header.help {
+	color: #666666;
+	font-size: 13px;
+}
+
+a.open_new_tab {
+	color: #0099ff;
+}
+
+.username_in_header {
+	color: #000000;
+	font-weight: bold;
+}
+
+a img {
+	border: none;
+}
+
+label {
+	font-weight: bold;
+}
+
+label.disabled {
+	font-weight: 100;
+	font-style: italic;
+}
+
+.id_text_box {
+	width: 240px;
+}
+
+.comment_text_box {
+	width: 400px;
+}
+
+.matrixMainHeader {
+	background: url(../images/bg-matrix-main-header.png) repeat-x;
+	font-size: 13px;
+	font-weight: bold;
+	border-bottom: 1px solid #999999;
+}
+
+.matrixInsideHeader {
+	background: url(../images/bg-matrix-inside-header.png) repeat-x;
+	font-size: 12px;
+	border-bottom: 1px solid #cccccc;
+	border-right: 2px solid #cccccc;
+}
+
+.matrixInsideHeaderRight {
+	background: url(../images/bg-matrix-inside-header.png) repeat-x;
+	font-size: 12px;
+	border-bottom: 1px solid #cccccc;
+}
+
+
+/* outermost layout container */
+
+#outer {
+	width: 100%;
+	height: 100%;
+}
+
+
+/* Header */
+
+#topBar {
+	vertical-align: bottom;
+}
+
+#logo {
+	background: url(../images/bg01.png) repeat-x;
+	background-color: #e0e0e0;
+	height: 100px;
+	margin: 0;
+	position: relative; /* This makes it dynamic, so that things inside it can be positioned relative to it. */
+	top: 0;             /* These make it so that its position is the same as if ...   */
+	left: 0;            /* ... it was static (i.e. 0 offset relative to normal flow). */
+	padding: 0;
+}
+
+#logo p {
+	float: left;
+	margin: 20px 0 0 20px;
+}
+
+
+/* SecondaryMenu */
+
+#secondaryMenu {
+	float: right;
+	margin: 0 20px 0 0;
+	padding: 0;
+}
+
+#fixed {
+	float:right;
+	width:1px;
+	height:60px;
+	display:block;
+	margin: 0px;
+	padding: 0px;
+}
+
+/* Menu */
+
+#menu {
+	margin: 0;
+	padding: 0;
+	float: right;
+	position: absolute; /* Relative to #logo. */
+	text-align: right;
+	right: 10px;
+	bottom: 0;
+}
+
+#menu span {
+/*	display: block; */	/* With Dojo 1.2, aligns tabs vertically. */
+/*	float: right;   */	/* With Dojo 1.2, reverses tabs in FF3 and puts them down the right hand side in IE7. */
+}
+
+#menu .dijitButtonText {
+	height: 15px;
+	padding: 5px;
+	text-decoration: none;
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+	border: none;
+}
+
+/*
+#menu a:hover {
+*/
+
+#menu .dijitButtonNode {
+	background-color: #ffffff;
+	background: url(../images/button-off-bg.png) repeat;
+	margin-right: 5px;
+	padding: 0px;
+	border-right: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-top: 1px solid #CCCCCC;
+	
+}
+
+#menu button:hover {
+	background: #ffffff;
+	background: url(../images/button-off-bg.png) repeat;
+	border-right: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-top: 1px solid #CCCCCC;
+}
+
+#menu .dijitToggleButtonChecked .dijitButtonNode {
+	background: url(../images/button-on-bg.png) repeat;
+	border-bottom: 1px solid #FFFFFF;
+}
+
+
+#menu span {
+	padding-right: 0px;
+}
+
+#main_stack_container {
+	float:right;
+}
+
+#main_stack_container .dijitContentPane {
+	overflow: hidden; /* Prevents superfluous scrollbars in IE7. */
+}
+
+#system_config .dijitContentPane,
+#sidebarMain .dijitContentPane {
+	overflow: auto; /* Special cases inside main_stack_container where we want scrollbars. */
+}
+
+.dijitStackController {
+ 	width: 200px;
+}
+
+
+/*
+A highly simplified extract of the generated HTML for a stack controller with two buttons, with the second one selected.
+
+<div id="menu">
+	<span class="dijitStackController">
+		<div class="dijitButton">
+			<div class="dijitRight">
+				<button class="dijitStretch dijitButtonNode dijitButtonContents">
+					<span class="dijitButtonText">Label 1</span>
+				</button>
+			</div>
+		</div>
+		<div class="dijitButton dijitToggleButtonChecked">
+			<div class="dijitRight">
+				<button class="dijitStretch dijitButtonNode dijitButtonContents">
+					<span class="dijitButtonText">Label 2</span>
+				</button>
+			</div>
+		</div>
+	</span>
+</div>
+*/
+
+/* BorderContainer Overrides  (BorderContainers are used in every configuration "page".) */
+
+/* Overrides ContentPane.css. */
+/* Applies to ContentPanes in BorderContainers. */
+.tundra .dijitBorderContainerNoGutter-dijitContentPane {
+	border: 0;
+	padding: 0;
+}
+
+/* Overrides BorderContainer.css. */
+.tundra .dijitBorderContainerNoGutter {
+	padding: 0;
+}
+
+
+.config_header {
+	height: 50px;
+	margin: 20px 30px 0 30px;
+}
+
+.config_header .title {
+	font-size: 2.5em;
+	font-weight: bold;
+	float: left;
+}
+
+.config_header a {
+	font-size: 1.5em;
+}
+
+.config_header .help {
+	float: right;
+}
+
+.config_header .bottom {
+	clear: both;
+}
+
+.nested.config_header {
+	height: 30px;
+	margin: 0;
+}
+
+.nested.config_header .title {
+	font-size: 1.6em;
+	font-weight: normal;
+}
+
+/*
+ This class is meant to be used on an empty node at the end of an enclosing node which is its offsetParent,
+ so that the offsetTop of the node is equal to the exact height needed by the parent node.
+*/
+.zero_height_end_marker {
+	height: 0 !important;
+	margin-bottom: 0 !important;
+
+/* for visualization *
+	border: 1px solid red !important;
+/**/
+}
+
+/* Workspace Header */
+
+#workspace_config_header {
+	height: 110px;
+	margin: 0 0 0 30px;
+}
+
+#workspace_config_header .config_header {
+	margin-left: 0;
+}
+
+
+/* Content */
+
+.config_content {
+	padding: 0;
+	margin: 10px 30px 0 30px;
+	line-height: 150%;
+	font-size: 12px;
+}
+
+#reactor_config_content {
+	padding: 0 0 20px 0;
+	margin: 10px 10px 0 30px;
+	line-height: 150%;
+	font-size: 12px;
+}
+
+.workspacePane {
+	background: url(../images/bg-workspace.png) repeat;
+}
+
+/* a div with this class goes inside each workspace pane, to serve as a target for reactors */
+.workspaceTarget {
+	height: 100%;
+}
+
+/* Overrides ContentPane.css. */
+/* Applies to Reactor workspaces, which are ContentPanes in a TabContainer. */
+.tundra .dijitTabContainerBottom-dijitContentPane {
+	padding: 0; /* otherwise arrowheads are off by 5px wrt Reactors */
+}
+
+
+/* Sidebar */
+
+#side {
+	width: 189px;
+	float: left;
+	margin: 0 auto 0 20px;
+	padding: 10px 0 0 0;
+}
+
+.sidebarInstructions {
+	line-height: 150%;
+	padding: 5px 5px 0 5px;
+	margin-top: 0px;
+	background:#cccccc;
+	font-size: 11px;
+	border: 0px;
+}
+
+.tundra .sidebar {
+	line-height: 150%;
+	padding: 0 5px 5px 5px;
+	background:#cccccc;
+	font-size: 11px;
+}
+
+#sidebarBottom {
+	margin: 20px 0 -5px 0;
+	height: 150px;
+}
+
+.sidebarHeader {
+	background: url(../images/bg02.png) repeat-x;
+	font-size: 14px;
+	color: #ffffff;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	margin: 0px;
+	border-bottom: 0px;
+	line-height: 1.5em; /* For historical reasons - in 3.0.x and earlier, this came from atomic_enterprise.html, when the rule that is now for '.atomic_enterprise_license' was for 'body'. */
+}
+
+#sidebarMain {
+	overflow: hidden;
+}
+
+#sidebarMain .collectionHeader {
+	background-image: none;
+	background: #ffcccc;
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+	padding: 5px;
+}
+
+#sidebarMain .processingHeader {
+	background-image: none;
+	background: #cce5ff;
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+	padding: 5px;
+}
+
+#sidebarMain .storageHeader {
+	background-image: none;
+	background: #cedaa6;
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+	padding: 5px;
+}
+
+.reactorBucket {
+	background: #ffffff;
+}
+
+.connectorBucket {
+	height: 50px;
+	background: #ffffff;
+	padding: 5px;
+}
+
+
+/* Footer */
+
+#footer {
+	margin: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	border-top: 1px solid #333333;
+}
+
+#footer p {
+	text-align: left;
+	font-size: smaller;
+	color: #666666;
+	margin: 0;
+}
+
+
+/* for drag-and-drop items in the Reactor configuration page*/
+
+#reactor_config .dojoDndItem {
+	border: #cccccc 1px solid;
+	width: 148px;
+	height: 25px;
+	margin: 10px 0;
+	cursor: pointer;
+}
+
+#reactor_config .dojoDndItemOver {
+	border: #666666 1px solid;
+	cursor:pointer;
+}
+
+
+/* for reactor dialog pop up windows>*/
+
+.reactor_dialog_top {
+	padding: 10px 10px 0 10px;
+}
+
+.reactor_dialog_bottom {
+	padding: 10px 10px 0 10px;
+}
+
+.reactor_connections_dialog {
+	padding: 10px;
+}
+
+.reactor_grid_block {
+	padding: 5px 10px 5px 10px; 
+	border: 1px solid #6096b6;
+}
+
+.reactor_grid_header .title {
+	float: left;
+}
+
+.reactor_grid_header .help {
+	float: right;
+}
+
+.reactor_grid_header .bottom {
+	clear: both;
+}
+
+.reactor_grid_header .title,
+.reactor_grid_block h2 {
+	font-size: 16px;
+}
+
+.reactor_grid_header,
+.reactor_grid_block h2 {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+.collection .reactor_grid_block {
+	background-color: #fddfdf; 
+}
+
+.processing .reactor_grid_block {
+	background-color: #d8ecf8; 
+}
+
+.storage .reactor_grid_block {
+	background-color: #f0f9d1; 
+}
+
+.reactor_name {
+	float:left;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.reactor_cat {
+	float:right; 
+	font-size: 11px;
+}
+
+.reactor_cat a {
+	font-size: 14px;
+}
+
+/* for moveable items, e.g. reactors in a workspace */
+
+.name {
+	width: 132px;
+	height: 20px;
+	overflow: hidden;
+	font-size: 12px;
+	white-space: nowrap;
+}
+
+
+.moveable {
+	padding: 8px 10px 0 5px;
+	border: 1px solid #666666;
+	cursor: pointer;
+	width: 132px;
+	height: 40px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.tundra .moveable .dijitToggleButton .dijitButtonNode {
+	width: 16px;
+	height: 16px;
+	background-color: transparent;
+	background: url(../images/control-play.png) no-repeat;
+	margin-left: 20px;
+	border: 0px;
+}
+
+
+.tundra .moveable .dijitToggleButtonChecked .dijitButtonNode {
+	width: 16px;
+	height: 16px;
+	background-color: #ffffff;
+	background: url(../images/control-stop.png) no-repeat;
+	margin-left: 20px;
+	border: 0px;
+}
+
+.tundra .moveable .ops_per_sec {
+	margin-left: 45px;
+	font-size: 9px;
+	color: #999999;
+}
+
+.reactor {
+	background-color: #ffffff;
+	background: url(../images/bg-moveable-reactor.png) repeat-x;
+}
+
+.reactor_proxy {
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+}
+
+.reactor_proxy.collection {
+	background-color: #fddfdf; 
+}
+
+.reactor_proxy.processing {
+	background-color: #d8ecf8; 
+}
+
+.reactor_proxy.storage {
+	background-color: #f0f9d1; 
+}
+
+/*
+The following are also available, if the need arises.
+
+.reactor.collection {
+}
+
+.reactor.processing {
+}
+
+.reactor.storage {
+}
+*/
+
+/* Tabs */
+
+.tundra .dijitTabPaneWrapper {
+	/*
+	overflow: hidden;
+	*/
+	background:#fff; 
+	border:1px solid #ccc;
+}
+
+.tundra .dijitTab {
+	line-height:normal;
+	margin-right:5px;	/* space between one tab and the next in top/bottom mode */
+	padding:0px;
+	border:1px solid #ccc;
+	background: url(../images/bg-tab-off.png) repeat-x;
+}
+
+.tundra .dijitAlignLeft .dijitTab,
+.tundra .dijitAlignRight .dijitTab {
+	margin-right:0px;
+	margin-bottom:5px;	/* space between one tab and the next in left/right mode */
+}
+
+.tundra .dijitTabInnerDiv {
+	padding:6px 10px 4px 10px;
+	border-left:1px solid #fff;
+	border-bottom:1px solid #fff;
+}
+
+.tundra .dijitTabHover,
+.tundra .dijitTabCloseButtonHover {
+	border:1px solid #ccc;
+	background: url(../images/bg-tab-hover.png) repeat-x;
+}
+
+.dj_ie6 .tundra .dijitTabHover,
+.dj_ie6 .tundra .dijitTabCloseButtonHover {
+	background-image: url(../images/bg-tab-hover.png);
+}
+
+.tundra .dijitTabChecked,
+.tundra .dijitTabCloseButtonChecked
+{
+	/* the selected tab (with or without hover) */
+	background: url(../images/bg-tab-on.png) repeat-x;
+	border-color: #ccc;
+	font-weight: bold; 
+}
+
+.create_new_tab {
+	border: 0 !important;
+	background-color: #ffffff !important;
+	background: none !important;
+	text-decoration: underline !important;
+}
+
+
+.reactor_dialog {
+	width: 700px;
+	padding: 20px;
+	margin:20px;
+}
+
+.pion_server_error_dialog {
+	width: 500px;
+}
+
+.pion_server_error_dialog .dijitButtonNode button {
+	border: solid #999999 1px;
+	color: #366dba;
+	font-weight: bold;
+	width: auto;
+	height: 25px;
+	margin-right: 10px;
+}
+
+/* Overwrite Dojo Dijit Styles for the Config Screens */
+
+/* Global Config Styles */
+
+.tundra .save .dijitButtonNode, 
+.tundra button.save {
+	background: #ffffff url("../images/button-save-off.png") repeat-x;
+	border: solid #999999 1px;
+	color: #366dba;
+	font-weight: bold;
+	width: auto;
+	height: 22px;
+	text-align: left;
+	padding-top: 1px;
+	padding-left: 25px;
+	padding-right: 2px;
+}
+
+.tundra .save.dijitButtonHover .dijitButtonNode, 
+.tundra button.save:hover {
+	background: #ffffff url("../images/button-save-on.png") repeat-x;
+}
+
+.tundra button.disabled.save {
+	background: #ffffff url("../images/button-save-off.png") repeat-x;
+	font-weight: 100;
+}
+
+.tundra button.edit {
+	width: 100%;
+	height: auto;
+	padding: 2px;
+}
+
+.tundra button.add_new,
+.tundra .add_new .dijitButtonNode {
+	background: #ffffff url("../images/button-add-off.png") no-repeat;
+	border: solid #999999 1px;
+	color: #366dba;
+	font-weight: bold;
+	width: auto;
+	height: 22px;
+	text-align: left;
+	padding-top: 1px;
+	padding-left: 25px;
+	padding-right: 2px;
+}
+
+.tundra button.add_new:hover,
+.tundra .add_new.dijitButtonHover .dijitButtonNode {
+	background: #ffffff url("../images/button-add-on.png") no-repeat;
+}
+
+.tundra button.disabled.add_new {
+	background: #ffffff url("../images/button-add-off.png") no-repeat;
+	font-weight: 100;
+}
+
+.tundra button.cancel,
+.tundra .cancel .dijitButtonNode {
+	background: #ffffff url("../images/button-cancel-off.png") repeat-x;
+	border: solid #999999 1px;
+	color: #366dba;
+	font-weight: bold;
+	width: auto;
+	height: 22px;
+	text-align: left;
+	padding-top: 1px;
+	padding-left: 25px;
+	padding-right: 2px;
+}
+
+.tundra button.cancel:hover,
+.tundra .cancel.dijitButtonHover .dijitButtonNode {
+	background: #ffffff url("../images/button-cancel-on.png") repeat-x;
+}
+
+.tundra button.delete,
+.tundra .delete .dijitButtonNode {
+	background: #ffffff url("../images/button-delete-off.png") repeat-x;
+	border: solid #999999 1px;
+	color: #366dba;
+	font-weight: bold;
+	width: auto;
+	height: 22px;
+	text-align: left;
+	padding-top: 1px;
+	padding-left: 25px;
+	padding-right: 2px;
+}
+
+.tundra button.delete:hover,
+.tundra .delete.dijitButtonHover .dijitButtonNode {
+	background: #ffffff url("../images/button-delete-on.png") repeat-x;
+}
+
+.tundra .import .dijitButtonNode, 
+.tundra button.import {
+	background: #ffffff url("../images/button-import-off.png") repeat-x;
+	border: solid #999999 1px;
+	color: #366dba;
+	font-weight: bold;
+	width: auto;
+	height: 22px;
+	text-align: left;
+	padding-top: 1px;
+	padding-left: 25px;
+	padding-right: 2px;
+}
+
+.tundra .import.dijitButtonHover .dijitButtonNode, 
+.tundra button.import:hover {
+	background: #ffffff url("../images/button-import-on.png") repeat-x;
+}
+
+.tundra button.disabled.import {
+	background: #ffffff url("../images/button-import-off.png") repeat-x;
+	font-weight: 100;
+}
+
+.tundra .export .dijitButtonNode, 
+.tundra button.export {
+	background: #ffffff url("../images/button-export-off.png") no-repeat;
+	border: solid #999999 1px;
+	color: #366dba;
+	font-weight: bold;
+	width: auto;
+	height: 22px;
+	text-align: left;
+	padding-top: 1px;
+	padding-left: 25px;
+	padding-right: 2px;
+}
+
+.tundra .export.dijitButtonHover .dijitButtonNode, 
+.tundra button.export:hover {
+	background: #ffffff url("../images/button-export-on.png") no-repeat;
+}
+
+.tundra button.disabled.export {
+	background: #ffffff url("../images/button-export-off.png") no-repeat;
+	font-weight: 100;
+}
+
+.tundra button.restore {
+	background-image: url('../images/icon-restore.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	border: outset #CCCCCC 3px;
+	width: auto;
+	height: 22px;
+	padding-left: 20px;
+}
+
+.tundra button.restore:hover {
+	background-image: url('../images/icon-restore-hover.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.tundra button.disabled.restore {
+	background-image: url('../images/icon-restore-disabled.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.tundra button.delete_row {
+	background-image: url('../images/icon-delete.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	border: outset #CCCCCC 3px;
+	width: auto;
+	height: 22px;
+	padding-left: 20px;
+}
+
+.tundra button.delete_row:hover {
+	background-image: url('../images/icon-delete-hover.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+/*
+I don't think this is being used anywhere.
+
+.tundra .delete_row.dijitButtonHover .dijitButtonNode {
+	background: url("../images/button-delete-row-on.png") no-repeat;
+	background-color: none;
+}
+*/
+
+.tundra .add_new_pane .dijitButtonNode {
+	background: #ffffff url("../images/button-add-new-pane-off.png") no-repeat;
+	border: none;
+	color: #366dba;
+	font-size: 16px;
+	font-weight: bold;
+	width: auto;
+	height: 30px;
+	text-align: left;
+	padding-left: 25px;
+	padding-right: 2px;
+}
+
+
+.tundra .add_new_pane.dijitButtonHover .dijitButtonNode {
+	background: #ffffff url("../images/button-add-new-pane-on.png") no-repeat;
+}
+
+
+.tundra .add_new_row .dijitButtonNode {
+	background: url("../images/button-add-new-row-off.png") no-repeat;
+	border: none;
+	color: #366dba;
+	font-size: 11px;
+	width: auto;
+	height: 24px;
+	text-align: left;
+	padding-left: 25px;
+	padding-right: 2px;
+}
+
+.tundra .add_new_row.above_grid .dijitButtonNode {
+	margin-top: 10px;
+}
+
+.tundra .add_new_row.dijitButtonHover .dijitButtonNode {
+	background: url("../images/button-add-new-row-on.png") no-repeat;
+}
+
+.save_cancel_delete {
+	margin: 5px;
+}
+
+.unsaved_changes {
+	background: #FFFFCC !important;
+	/*border: 1px dashed #666666 !important;*/
+}
+
+/***************************************************************************************************************************/
+/* Before changing any of these .delete_dialog rules, make sure the results look right on both FF and IE for at least the  */
+/* following four cases: deleting a connection, deleting a reactor, deleting a workspace and re-running the wizard.        */
+
+.delete_dialog {
+	width: 500px;
+}
+
+.delete_dialog img.alert {
+	float: left;
+	padding-right: 20px;
+	padding-bottom: 10px;
+}
+
+.delete_dialog .warning_text {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+/***************************************************************************************************************************/
+
+
+/* Styles affecting all Config Panes */
+/* TODO: Add new class config_pane and refactor all the rules common to 
+   all of vocab_pane, codec_pane, database_pane, protocol_pane, user_pane.
+   Then change the following rule to:
+   .tundra config_pane textarea.comment { ...
+*/
+
+.tundra textarea.comment {
+	width: 250px;
+}
+
+.tundra .config_content .plugin_type input {
+	width: 75%;
+	margin-right: 20px;
+}
+
+
+/* Vocab Config Styles */
+
+
+.tundra .vocab_pane {
+	padding-left: 10px;
+	padding-right: 10px;
+	height: auto;
+	background: url("../images/bg-accordion-pane.png");
+}
+
+
+/* Codecs Config Styles */
+
+
+.tundra .codec_pane {
+	padding-left: 10px;
+	padding-right: 10px;
+	height: auto;
+	background: url("../images/bg-accordion-pane.png");
+}
+
+
+/* Database Config Styles */
+
+
+.tundra .database_pane {
+	padding-left: 10px;
+	padding-right: 10px;
+	height: auto;
+	background: url("../images/bg-accordion-pane.png");
+}
+
+
+/* Protocols Config Styles */
+
+
+.tundra .protocol_pane {
+	padding-left: 10px;
+	padding-right: 10px;
+	height: auto;
+	background: url("../images/bg-accordion-pane.png");
+}
+
+
+/* Users Config Styles */
+
+
+.tundra .user_pane {
+	padding-left: 10px;
+	padding-right: 10px;
+	height: auto;
+	background: url("../images/bg-accordion-pane.png");
+}
+
+.tundra .user_pane .single_indent {
+	padding-left: 15px;
+}
+
+.tundra .group_label {
+	font-weight: 100;
+	font-style: italic;
+}
+
+/* for drag-and-drop items in the System configuration page*/
+
+#system_config .dojoDndItem {
+	padding: 1px 10px 1px 20px;
+	margin: 5px 0;
+	border: 1px solid #666666;
+	cursor: pointer;
+}
+
+#system_config .dojoDndItemOver {
+	background: #ededed;
+	cursor:pointer;
+}
+
+.tundra .add_new_plugin_path .dijitButtonNode {
+	background: url("../images/button-add-new-plugin-path-off.png");
+	border: none;
+	color: #366dba;
+	font-size: 11px;
+	width: auto;
+	height: 24px;
+	text-align: left;
+	padding-left: 25px;
+	padding-right: 2px;
+}
+
+.tundra .add_new_plugin_path.dijitButtonHover .dijitButtonNode {
+	background: url("../images/button-add-new-plugin-path-on.png");
+}
+
+.codec_grid {
+	height: 180px;
+}
+
+.vocab_grid {
+	height: 180px;
+}
+
+.protocol_grid {
+	height: 180px;
+}
+
+.reactor_dialog_grid {
+	padding: 0px;
+	margin: 5px 0 5px;
+	border: 1px solid #6096b6;
+	width: 618px;
+}
+
+.wide .reactor_dialog_grid {
+	width: 718px;
+}
+
+.field_mapping_grid {
+	height: 200px;
+}
+
+.transformation_grid {
+	height: 200px;
+}
+
+.lookup_grid {
+	height: 400px;
+}
+
+.rule_grid {
+	height: 500px;
+}
+
+.regex_grid {
+	height: 500px;
+}
+
+.query_grid {
+	height: 200px;
+}
+
+.tundra .dojoxGrid {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+/* System Config Styles */
+
+.pathsTable td {
+	border-bottom: 1px solid #999999;
+}
+
+.tundra .dijitTreeNode {
+	background-image : url('../images/bg-tree-i.png');
+	background-position : top left;
+	background-repeat : repeat-y;
+	margin-left: 19px;
+	zoom: 1;	/* MOW: what the heck is this doing in here? */
+}
+
+/* Accordion Title Styles */
+
+.tundra .dijitAccordionTitle-selected {
+	text-decoration: none;
+	background: url("../images/accordion-title-bg.png");
+	color: #ffffff;
+}
+
+/*
+ This fixes a "white-on-white" bug when using some grid editors.
+*/ 
+.tundra .dojoxGrid-row-over .dojoxGrid-cell .dijit { 
+	color: #000;
+}
+
+.tundra .dijitButtonNode {
+	padding: 0px;
+	margin:0px;
+	background:none;
+	border: 0px;
+}
+
+.dijitToggleButtonChecked {
+	padding: 0px;
+	margin:0px;
+	background:none;
+	border: 0px;
+}
+
+.content_button .dijitButtonText {
+	border: 1px solid #666666;
+	padding: 5px;
+	background-color: #e6e6e6;
+	font-weight:bold;
+}
+
+.generic_button .dijitButtonText {
+	border: 1px solid #666666;
+	padding: 5px;
+	background-color: #e6e6e6;
+	font-weight:bold;
+}
+
+.tundra button.open_keystore_editor  {
+	background: #ffffff url("../images/button-edit-keys.png") repeat-x;
+	border: solid #999999 1px;
+	color: #366dba;
+	font-weight: bold;
+	width: auto;
+	height: 22px;
+	text-align: left;
+	padding-top: 1px;
+	padding-left: 25px;
+	padding-right: 2px;
+}
+
+.tundra .key_store_editor {
+	border: none;
+}
+
+.termSelectorContainer thead tr th, .termSelectorContainer thead tr td, .termSelectorContainer tbody tr td, .termSelectorContainer tfoot tr td {
+	padding: 0;
+}
+
+.tundra table.termSelectorContainer {
+	font-size: 100%;
+	border-spacing: 0;
+	border-collapse: separate;
+	border: 1px solid #ccc;
+	margin: 0;
+	padding: 10px;
+	background-color: #6699ff;
+}
+
+.tundra .termSelectorHead th {
+	background:#d3d3d3 url("../dojo-release/dijit/themes/tundra/images/titleBar.png") repeat-x top;
+	padding-top:.3em;
+	padding-bottom:.2em;
+	border: 1px solid #ccc;
+	text-align:center;
+}
+
+div.glowing_horiz {
+	background: url("../images/glow-for-horizontal-lines.png") repeat;
+	z-index: 200;
+}
+
+div.glowing_vert {
+	background: url("../images/glow-for-vertical-lines.png") repeat;
+	z-index: 200;
+}
+
+div.normal {
+	background: url("../images/0.gif");
+	z-index: 100;
+}
+
+a.link {
+	color:#0033CC;
+	text-decoration: underline;
+}
+
+/* This overrides dijit/themes/tundra/form/Common.css, because #eee is practically invisible. */
+.dj_webkit .tundra .dijitTextBoxDisabled {
+	color: #999;
+}
+
+/*
+This overrides a rule in FloatingPane.css that specifies a non-existent image.
+See http://bugs.dojotoolkit.org/ticket/11811.
+*/
+.dojoxDockRestoreButton {
+	background: url('../images/arrowUp.png') no-repeat center center !important;
+}

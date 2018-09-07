@@ -1,0 +1,47 @@
+<div class="dijitDialog reactor_dialog" tabindex="-1" waiRole="dialog" waiState="labelledby-${id}_title">
+	<div dojoAttachPoint="titleBar" class="dijitDialogTitleBar">
+		<span dojoAttachPoint="titleNode" class="dijitDialogTitle">Log File Input Reactor Initialization</span>
+	</div>
+	<div dojoAttachPoint="containerNode" class="dijitDialogPaneContent">
+		<table>
+			<tr>
+				<td><label>Name:</label></td>
+				<td><input dojoType="dijit.form.TextBox" name="Name" class="name_text_box"/></td>
+			</tr>
+			<tr>
+				<td><label>Comments:</label></td>
+				<td><input dojoType="dijit.form.TextBox" name="Comment" class="comment_text_box"/></td>
+			</tr>
+			<tr>
+				<td><label>Codec:</label></td>
+				<td><input dojoType="pion.widgets.SimpleSelect" name="Codec" store="pion.codecs.config_store" searchAttr="Name"/></td>
+			</tr>
+			<tr>
+				<td><label>Directory:</label></td>
+				<td><input dojoType="dijit.form.TextBox" name="Directory"/></td>
+			</tr>
+			<tr>
+				<td><label>Filename Regex:</label></td>
+				<td><input dojoType="dijit.form.TextBox" name="Filename"/></td>
+			</tr>
+			<tr>
+				<td><label>Frequency (in seconds):</label></td>
+				<td><input dojoType="dijit.form.ValidationTextBox" type="text" name="Frequency" regExp="[1-9][0-9]*"></td>
+			</tr>
+		</table>
+		<table
+			><tr
+				><td><label>Just One</label></td
+				><td><input dojoType="dijit.form.CheckBox" type="checkBox" name="options" value="JustOne"/></td
+			></tr
+			><tr
+				><td><label>Tail</label></td
+				><td><input dojoType="dijit.form.CheckBox" type="checkBox" name="options" value="TailF"/></td
+			></tr
+		></table>
+	</div>
+	<div class="save_cancel_delete">
+		<button dojoType=dijit.form.Button class="save" dojoAttachEvent="onClick: tryConfig">Save</button>
+		<button dojoType=dijit.form.Button class="cancel">Cancel</button>
+	</div>
+</div>

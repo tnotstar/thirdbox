@@ -1,0 +1,91 @@
+<div class="dijitDialog reactor_dialog">
+	<div dojoAttachPoint="titleBar" class="dijitDialogTitleBar" tabindex="0" waiRole="dialog">
+		<span dojoAttachPoint="titleNode" class="dijitDialogTitle">Database Output Reactor Configuration</span>
+		<span dojoAttachPoint="closeButtonNode" class="dijitDialogCloseIcon" dojoAttachEvent="onclick: onCancel">
+			<span dojoAttachPoint="closeText" class="closeText">x</span>
+		</span>
+	</div>
+	<div dojoAttachPoint="containerNode" class="dijitDialogPaneContent storage">
+		<!--start div to set padding for top half of dialog-->
+		 <div class="reactor_dialog_top">
+
+			<div dojoType=plugins.reactors.ReactorBoilerplate
+				 label="Database Output Reactor" name="DatabaseOutputReactor" category="Storage"
+				 description="Send real-time data into a database or data warehouse.">
+			</div>
+
+			<!--start reactor settings-->
+			 <table
+				><tr
+					><td><label>Name:</label></td
+					><td><input dojoType="dijit.form.TextBox" name="Name" class="name_text_box"/></td
+				></tr><tr
+					><td><label>ID:</label></td
+					><td><input dojoType="dijit.form.TextBox" name="@id" class="id_text_box" disabled="true"/></td
+				></tr><tr
+					><td><label>Comments:</label></td
+					><td><input dojoType="dijit.form.TextBox" name="Comment" class="comment_text_box"/></td
+				></tr><tr
+					><td><label>Database:</label></td
+					><td><input dojoType="pion.widgets.SimpleSelect" name="Database" store="pion.databases.config_store" searchAttr="Name"/></td
+				></tr><tr
+					><td><label>Table:</label></td
+					><td><input dojoType="dijit.form.TextBox" name="Table"/></td
+				></tr><tr
+					><td><label>Queue Size:</label></td
+					><td><input dojoType="dijit.form.NumberTextBox" type="text" name="QueueSize" constraints="{min: 1}" /></td
+				></tr><tr
+					><td><label>Queue Timeout:</label></td
+					><td><input dojoType="dijit.form.NumberTextBox" type="text" name="QueueTimeout" constraints="{min: 1}" /></td
+				></tr><tr
+					><td><label>Number of Inserters:</label></td
+					><td><input dojoType="dijit.form.NumberTextBox" type="text" name="NumInserters" constraints="{min: 1}" /></td
+				></tr><tr
+					><td><label>Ignore Insert Errors</label></td
+					><td><input dojoType="dijit.form.CheckBox" type="checkBox" name="options" value="IgnoreInsert"/></td
+				></tr><tr
+					><td><label dojoAttachPoint="key_cache_max_age_label">Key Cache Max Age:</label></td
+					><td><input dojoAttachPoint="key_cache_max_age" dojoType="dijit.form.TextBox" name="KeyCacheMaxAge"/></td
+				></tr><tr
+					><td><label dojoAttachPoint="key_cache_age_term_label">Key Cache Age Term:</label></td
+					><td><input dojoAttachPoint="key_cache_age_term" dojoType="pion.widgets.TermTextBox" name="KeyCacheAgeTerm" style="width: 100%;" /></td
+				></tr
+			 ></table>
+			<!--end reactor settings-->
+
+		</div>
+		<!--end div to set padding for top half of dialog-->
+
+		<!--start div to set padding for bottom half of dialog-->
+		<div class="reactor_dialog_bottom">
+
+			<div class="reactor_grid_block">
+				<div dojoType="pion.widgets.ReactorGridHeader" title="Inclusion Conditions" help="docs/comparisons"></div>
+				<input dojoType="dijit.form.CheckBox" type="checkBox" name="options" value="MatchAllComparisons" dojoAttachEvent="onClick: _onUpdateMatchAllComparisons" />
+				<label>Match All Comparisons</label>
+				<div class="reactor_dialog_grid" dojoAttachPoint="comparison_grid_node" style="width: 618px"></div>
+				<button dojoAttachPoint="add_new_comparison_button" dojoType=dijit.form.Button dojoAttachEvent="onClick: _handleAddNewComparison" class="add_new_row">ADD NEW COMPARISON</button>
+			</div>
+
+			<br />
+
+			<!--start field mappings-->
+			<div class="reactor_grid_block">
+				<h2>Field Mappings</h2>
+				<div class="field_mapping_grid reactor_dialog_grid" dojoAttachPoint="field_mapping_grid_node" style="width: 618px"></div>
+				<button dojoType=dijit.form.Button dojoAttachEvent="onClick: _handleAddNewMapping" class="add_new_row">ADD NEW MAPPING</button>
+			</div>
+			<!--end field mappings-->
+
+			<!--start buttons-->
+			<div class="save_cancel_delete">
+				<button dojoType=dijit.form.Button class="save" type="submit">Save</button>
+				<button dojoType=dijit.form.Button class="cancel">Cancel</button>
+			</div>
+			<!--end buttons--> 
+
+		</div>
+		<!--end div to set padding for bottom half of dialog-->
+
+	</div>
+</div>

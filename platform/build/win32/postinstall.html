@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Pion &trade; Rule Your Data</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="en-us" />
+
+		<style type="text/css" media="screen">
+
+			p {
+			font-size: 12px;
+			font-family: Helvetica, "Arial", sans-serif;
+			}
+
+			body {
+			margin: 0;
+			padding: 0;
+			font-family: Helvetica, Arial, Sans-Serif;
+			font-size: 12px;
+			}
+
+			li {
+			padding: 5px 0;
+			}
+
+		</style>
+
+		<META NAME="ROBOTS" CONTENT="NOFOLLOW">
+	</head>
+	<body link="#3399cc" vlink="#3399cc">
+
+		<div style="width: 600px; margin-left: 30px;">
+
+			<h1>Pion is now installed.</h1>
+
+			<h2>Pion can be run as either a service or an application.</h2>
+
+			<h3>Option 1: Start Pion as service</h3>
+
+				<p>
+					The service can be started and stopped from the Services window (accessible through Administrative Tools in the Control Panel), where it will appear as 'Atomic Labs Pion Core', or through shortcuts 'Start Pion' and 'Stop Pion' in the Start Menu.
+					For Windows Vista or Windows Server 2008, you must change the properties of the service (from the Services window) before you can start it:
+				</p>
+
+				<ol>
+					<li>
+						Right click on the service.
+					<li>
+						Select Properties, and then the "Log on" tab.
+					<li>
+						Select "This account:" and enter <code>administrator</code>, then enter the administrator password.
+					<li>
+						Now you can start the service.
+				</ol>
+
+			<h3>Option 2: Start Pion as application</h3>
+
+				<p>
+					Open a command prompt window in the installation directory and run <code>start_pion.bat</code>.
+				</p>
+
+			<h3>Load interface</h3>
+
+				Once Pion is running, you can use it by opening a browser (Firefox, Chrome, Safari or IE) and pointing it to <a href="http://localhost:8888">http://localhost:8888</a>.  Note that IE <em>requires</em> the "http://" and v8 <em>requires</em> that you enable "compatability mode."
+
+			<h3>Login</h3>
+
+				The default username and password are both "pion"
+
+		</div>
+	</body>
+</html>
