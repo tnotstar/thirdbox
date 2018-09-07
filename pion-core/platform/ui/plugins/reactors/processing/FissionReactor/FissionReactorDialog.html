@@ -1,0 +1,71 @@
+<div class="dijitDialog reactor_dialog" tabindex="-1" waiRole="dialog" waiState="labelledby-${id}_title">
+	<div dojoAttachPoint="titleBar" class="dijitDialogTitleBar">
+		<span dojoAttachPoint="titleNode" class="dijitDialogTitle">Fission Reactor Configuration</span>
+		<span dojoAttachPoint="closeButtonNode" class="dijitDialogCloseIcon" dojoAttachEvent="onclick: onCancel">
+			<span dojoAttachPoint="closeText" class="closeText">x</span>
+		</span>
+	</div>
+	<div dojoAttachPoint="containerNode" class="dijitDialogPaneContent processing">
+		<!--start div to set padding for top half of dialog-->
+		<div class="reactor_dialog_top">
+
+			<div dojoType=plugins.reactors.ReactorBoilerplate
+				 label="Fission Reactor" name="FissionReactor" category="Processing"
+				 description="Split each input event into a collection of output events.">
+			</div>
+
+			 <!--start reactor settings-->
+			<table cellpadding="0" cellspacing="5" border="0"
+				><tr
+					><td><label>Name:</label></td
+					><td><input dojoType="dijit.form.TextBox" name="Name" class="name_text_box"/></td
+				></tr><tr
+					><td><label>ID:</label></td
+					><td><input dojoType="dijit.form.TextBox" name="@id" class="id_text_box" disabled="true"/></td
+				></tr><tr
+					><td><label>Comments:</label></td
+					><td><input dojoType="dijit.form.TextBox" name="Comment" class="comment_text_box"/></td
+				></tr><tr
+					><td><label>Input&nbsp;Event&nbsp;Type:</label></td
+					><td><input dojoType="pion.widgets.TermTextBox" name="InputEventType" query="{type: 'event type'}" style="width: 100%;" /></td
+				></tr><tr
+					><td><label>Input&nbsp;Event&nbsp;Term:</label></td
+					><td><input dojoType="pion.widgets.TermTextBox" name="InputEventTerm" query="{category: 'string'}" style="width: 100%;" /></td
+				></tr><tr
+					><td><label>Codec:</label></td
+					><td><input dojoType="pion.widgets.SimpleSelect" name="Codec" store="pion.codecs.config_store" searchAttr="Name"/></td
+				></tr><tr
+					><td><label>Copy all terms from original event</label></td
+					><td><input dojoType="dijit.form.CheckBox" type="checkBox" name="options" value="CopyAllTerms" /></td
+				></tr
+			></table>
+			<div style="clear:both;"></div>
+			<!--end reactor settings-->
+
+		</div>
+		<!--end div to set padding for top half of dialog-->
+
+		<!--start div to set padding for bottom half of dialog-->
+		<div class="reactor_dialog_bottom">
+
+			<!--start copy terms-->
+			<div class="reactor_grid_block">
+				<h2>Terms to copy (optional)</h2>
+				<h4>For each input event, these terms will be copied to every resulting output event.</h4>
+				<div class="reactor_dialog_grid" dojoAttachPoint="copy_term_grid_node" style="width: 618px"></div>
+				<button dojoType=dijit.form.Button dojoAttachEvent="onClick: _handleAddNewCopyTerm" class="add_new_row">ADD NEW TERM TO COPY</button>
+			</div>
+			<!--end copy terms-->
+
+			<!--start buttons--> 
+			<div class="save_cancel_delete">
+				<button dojoType=dijit.form.Button class="save" type="submit">Save</button>
+				<button dojoType=dijit.form.Button class="cancel">Cancel</button>
+			</div>
+			<!--end buttons--> 
+
+		</div>
+		<!--end div to set padding for bottom half of dialog-->
+
+	</div>
+</div>

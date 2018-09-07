@@ -1,0 +1,50 @@
+.dojoxFloatingPane.monitor_service {
+	height: 540px;
+	width: 740px;
+}
+
+.dojoxFloatingPane.monitor_service .left_sidebar {
+	width: 225px;
+}
+
+.dojoxFloatingPane.monitor_service.collection .event_grid_pane {
+	background: #fddfdf; 
+}
+
+.dojoxFloatingPane.monitor_service.processing .event_grid_pane {
+	background: #d8ecf8; 
+}
+
+.dojoxFloatingPane.monitor_service.storage .event_grid_pane {
+	background: #f0f9d1; 
+}
+
+.event_grid_pane .dojoxGridCell.multi_valued {
+	font-style: italic;
+	color: gray;
+}
+
+.tundra .monitor_service h3 {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.tundra .monitor_settings .dijitToggleButton .dijitButtonNode {
+	width: 16px;
+	height: 16px;
+	background: url(../../../images/control-play-large.png) no-repeat;
+	margin-right: 10px;
+	border: 0px;
+}
+
+.tundra .monitor_settings .dijitToggleButtonChecked .dijitButtonNode {
+	background: url(../../../images/control-stop-large.png) no-repeat;
+}
+
+.tundra .monitor_service .dojoxGridCell {
+	white-space: nowrap;
+}
+
+.tundra .monitor_service .dojoxGridCell.dojoxGridCellOver {
+	white-space: normal;
+}

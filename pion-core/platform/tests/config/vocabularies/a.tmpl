@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PionConfig xmlns="http://purl.org/pion/config" pion_version="tests">
+  <Vocabulary id="urn:vocab:test">
+    <Name>Vocabulary A</Name>
+    <Comment>Vocabulary for Unit Tests</Comment>
+    <Term id="urn:vocab:test#null-term"/>
+    <Term id="urn:vocab:test#plain-old-int">
+      <Type>int16</Type>
+      <Comment>A plain, old integer number</Comment>
+    </Term>
+    <Term id="urn:vocab:test#big-int">
+      <Type>uint64</Type>
+      <Comment>A really big positive integer</Comment>
+    </Term>
+    <Term id="urn:vocab:test#fixed-text">
+      <Type size="10">char</Type>
+      <Comment>Ten bytes of text</Comment>
+    </Term>
+    <Term id="urn:vocab:test#date">
+      <Type format="%Y-%m-%d">datetime</Type>
+      <Comment>A specific date</Comment>
+    </Term>
+    <Term id="urn:vocab:test#simple-object">
+      <Type>object</Type>
+      <Comment>An object containing other Terms</Comment>
+    </Term>
+    <Term id="urn:vocab:test#blob-1">
+      <Type>blob</Type>
+    </Term>
+    <Term id="urn:vocab:test#blob-2">
+      <Type>blob</Type>
+    </Term>
+    <Term id="urn:vocab:test#blob-3">
+      <Type>blob</Type>
+    </Term>
+  </Vocabulary>
+</PionConfig>

@@ -1,0 +1,988 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<title>Pion&reg;, Rule Your Data</title>
+
+	<script type="text/javascript" src="ejschart/EJSChart.js"></script>
+
+	<!-- Use this block to use a built version of the UI.  -->
+	<!-- A built version is much faster to start up, but very hard to debug.  -->
+	<!--
+	-->
+	<style type="text/css">
+		@import "dojo-release/dijit/themes/tundra/tundra.css";
+		@import "dojo-release/dojox/grid/resources/Grid.css";
+		@import "dojo-release/dojox/grid/resources/tundraGrid.css";
+		@import "dojo-release/dojox/widget/Wizard/Wizard.css";
+		@import "dojo-release/dojox/widget/Standby/Standby.css";
+		@import "styles/default.css";
+	</style>
+
+	<script type="text/javascript">
+		// this is a hack to get safari 3.1 and earlier to work
+		// correctly with dojo when debugging is disabled
+		// note that it does appear to be fixed in safari 3.2
+		// SEE http://trac.dojotoolkit.org/ticket/6849
+		if (/3[\.0-9]+ Safari/.test(navigator.appVersion))
+			{ window.console = { origConsole: window.console, log: function(s){ this.origConsole.log(s); }, info: function(s){ this.origConsole.info(s); }, error: function(s){ this.origConsole.error(s); }, warn: function(s){ this.origConsole.warn(s); } }; }	
+	</script>
+
+	<script type="text/javascript" src="dojo-release/dojo/dojo.js"
+		djConfig="isDebug: false, debugAtAllCosts: false, parseOnLoad: true"></script>
+	<script type="text/javascript" src="dojo-release/dojo/pion-dojo.js"></script>
+	<!--
+	-->
+
+	<!-- Use this block to use the source version of the UI and the source version of Dojo.  -->
+	<!--
+	<style type="text/css">
+		@import "dojo-src/dijit/themes/tundra/tundra.css";
+		@import "dojo-src/dojox/grid/resources/Grid.css";
+		@import "dojo-src/dojox/grid/resources/tundraGrid.css";
+		@import "dojo-src/dojox/widget/Wizard/Wizard.css";
+		@import "dojo-src/dojox/widget/Standby/Standby.css";
+		@import "styles/default.css";
+	</style>
+	<script type="text/javascript" src="dojo-src/dojo/dojo.js"
+		djConfig="isDebug: true, debugAtAllCosts: false, parseOnLoad: true, popup: true, cacheBust: (new Date()).getTime()"></script>
+	<script type="text/javascript" src="dojo-src/dojox/gfx.js"></script>
+	<script type="text/javascript" src="scripts/pion.js"></script>
+	-->
+
+	<!-- Use this block to use the source version of the UI and a custom built version of Dojo.  -->
+	<!--
+	<style type="text/css">
+		@import "dojo-release/dijit/themes/tundra/tundra.css";
+		@import "dojo-release/dojox/grid/resources/Grid.css";
+		@import "dojo-release/dojox/grid/resources/tundraGrid.css";
+		@import "dojo-release/dojox/widget/Wizard/Wizard.css";
+		@import "dojo-release/dojox/widget/Standby/Standby.css";
+		@import "styles/default.css";
+	</style>
+	<script type="text/javascript" src="dojo-release/dojo/dojo.js"
+		djConfig="isDebug: true, debugAtAllCosts: false, parseOnLoad: true, popup: true, cacheBust: (new Date()).getTime()"></script>
+	<script type="text/javascript" src="dojo-release/dojo/dojo-for-pion.js"></script>
+	<script type="text/javascript" src="scripts/pion.js"></script>
+	-->
+</head>
+<body class="tundra">
+
+	<div id="wizard" dojoType="pion.widgets.Wizard" class="hidden" hideDisabled="true" style="background: #ffffff;">
+
+		<!--Start Edition Selection-->
+		<div dojoType="dojox.widget.WizardPane" id="select_edition_pane" style="background: #ffffff;">
+			
+			<div class="wizard_menu">
+				<p>
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_welcome_header">
+				<img src="../images/logo-pion-wizard.png"><br />
+				<h1 class="wizard_welcome">Welcome to the Setup Wizard</h1> 
+			</div>
+			<div class="wizard_welcome_hat">
+				<img src="../images/wizard-hat.png">
+			</div>
+				<h3 style="margin-left: 20px;">Please Select an Edition:</h3>
+				<form dojoType="pion.widgets.EditionSelectorForm" id="select_edition_form"></form>
+			<p class="next_button" style="display: none"></p>
+		</div>
+		<!--End Edition Selection-->
+
+		<!--Start License Key-->
+		<div dojoType="dojox.widget.WizardPane" id="license_key_pane" passFunction="pion.widgets.Wizard.checkLicenseKey" style="background: #ffffff;">
+
+			<div class="wizard_menu">
+				<p>
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+			<!--end divs for top menu and header-->
+
+			<div class="wizard_content">
+				<h1>Enter License Key</h1>
+				<h2>Please cut and paste your license key into the box below.</h2>
+				<p>
+				If you don't have a license key, you can obtain one from
+				<a href="http://www.atomiclabs.com/pion/trial-license.php" style="color:#0033CC; text-decoration:underline">atomiclabs.com</a>.
+				</p>
+				<textarea id="license_key_text_area" style="width: 100%" rows="8"></textarea>
+				<p><big><strong>
+					<span id="result_of_submitting_key"></span>
+				</strong></big></p>
+			</div>
+			<p class="prev_button" style="display: none"><< Go Back</p>
+			<p class="next_button" style="display: none">Continue to License Agreement >></p>
+		</div>
+		<!--End License Key-->
+
+<!--
+		<div dojoType="dojox.widget.WizardPane" passFunction="pion.widgets.Wizard.prepareLicensePane">
+			<div class="wizard_header">
+				Setup Wizard 
+			</div>
+			<div class="wizard_menu">
+				<p>
+					<a class="header" href="http://www.atomiclabs.com" target="_blank">Technical Documentation?</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a class="header" href="http://www.atomiclabs.com/pion-web-analytics/documentation.php" target="_blank">What else?</a>
+				</p>
+			</div>
+			<div style="clear: both"></div>
+			<h1>Warning</h1>
+			<div id=wizard_warning>
+				A diagnostic of your system revealed the following, which may prevent Pion ${Edition} from performing reliably:
+				<ul>
+					<li>Insufficent RAM (${RecommendedRAM} GB recommended)</li>
+					<li>Insufficient Disk Space (${RecommendedDiskSpace} GB recommended)</li>
+				</ul>
+				Your System May Not Support Minimum Requirements for Pion ${Edition}
+			</div>
+			<p class="prev_button" style="display: none"><< Go Back</p>
+			<p class="next_button" style="display: none">Continue to License Agreement Anyway >></p>
+			<a href="http://www.atomiclabs.com" target="_blank">Cancel Setup for Now</a>
+		</div>
+-->
+		<!--Start License Acceptance-->
+		<div dojoType="dojox.widget.WizardPane" id="license_acceptance_pane" passFunction="pion.widgets.Wizard.checkLicenseAccepted">
+			
+			<div class="wizard_menu">
+				<p>
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+
+			<div id=atomic_enterprise_license dojoType="dijit.layout.ContentPane" style="width:580px; border:1px solid #b7b7b7; background:#fff; padding:8px; margin:0 auto; height:260px; overflow:auto; "
+				href="licenses/atomic_enterprise.html">
+			</div>
+			<div id=gpl_affero_license dojoType="dijit.layout.ContentPane" style="width:580px; border:1px solid #b7b7b7; background:#fff; padding:8px; margin:0 auto; height:260px; overflow:auto; "
+				href="licenses/gpl_affero.html">
+			</div>
+			<div style="padding: 20px;" align="right">
+				<input id='license_accept_checkbox' dojoType="dijit.form.CheckBox" type="checkBox" name="checkboxes123" value="accept" /> I agree to the license.
+			</div>
+			<p class="prev_button" style="display: none" returnPane="select_edition_pane"><< Go Back</p>
+			<p class="next_button" style="display: none">Continue Setup Your Web Site >></p>
+			<p class="next_button_core" style="display: none">Complete Setup Wizard</p>
+		</div>
+		<!--End License Acceptance-->
+
+		<!--Start Domain Setup-->
+		<div dojoType="dojox.widget.WizardPane" id="host_pane" passFunction="pion.widgets.Wizard.checkHosts">
+			
+			<!--start divs for top menu and header-->
+			<div class="wizard_menu">
+				<p><a class="header" onclick="pion.widgets.Wizard.exitEarly()" href="#">Advanced Configuration</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+			<!--end divs for top menu and header-->
+			
+			<div class="wizard_content">
+			<h1>Setup Your Web Site</h1>
+			<h2>Add your site domain(s) (optional)</h2>
+				<p class="small"> 
+					The Pion wizard makes it easy to setup your first web site to be tracked with Pion.  Additional web sites can be setup 
+					in Pion later through the advanced configuration. 
+				</p>
+				<h3>Enter the suffixes for your site (i.e. yoursite.com)</h3>
+				<h4>Separate multiple suffixes with commas</h4>
+				<input dojoType="dijit.form.TextBox" id="host_suffixes" style="width: 80%;" />
+				
+				<p class="prev_button" style="display: none"><< Go Back</p>
+				<p class="next_button" style="display: none">Next Step: Configure Cookies >></p>
+			</div>
+			
+ 		</div>
+ 		<!--End Domain Setup-->
+ 		
+		<!--Start Cookies Configuration-->
+		<div dojoType="dojox.widget.WizardPane" id="cookie_pane" passFunction="pion.widgets.Wizard.checkCookies">
+			
+			<!--start divs for top menu and header-->
+			<div class="wizard_menu">
+				<p><a class="header" onclick="pion.widgets.Wizard.exitEarly()" href="#">Advanced Configuration</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+			<!--end divs for top menu and header-->
+			
+			<div class="wizard_content">
+			<h1>Setup Your Web Site</h1>
+			<h2>Configure your site's cookies (optional)</h2>
+			<p> 
+				Cookies are used by your web site to keep track of visitors as they move across your web site.
+				Persistent cookies keep track of individuals across multiple visits to your site.
+			</p>
+			<h3>Enter the names of the cookies used by your site (i.e. php_cookie or JSESSIONID)</h3>
+			<p><em>Separate multiple cookies with commas</em></p>
+			<label>Persistent cookies (these do not expire when the browser exits): </label>
+			<br/>
+			<input dojoType="dijit.form.TextBox" id="visitor_cookies" style="width: 90%;" value="__utmz, s_vi" />
+			<br/>
+			<label>Session cookies (these do expire when the browser exits): </label>
+			<br/>
+			<input dojoType="dijit.form.TextBox" id="session_cookies" style="width: 90%;" value="__utma" />
+			</div>
+			<p class="prev_button" style="display: none"><< Go Back</p>
+			<p class="next_button" style="display: none">Next Step: Connect To Your Web Analytics >></p>
+
+ 		</div>
+		<!--End Cookies Configuration-->
+		
+		<!--Start Web Analytics Provider Selection-->
+		<div dojoType="dojox.widget.WizardPane" id="analytics_provider_pane" passFunction="pion.widgets.Wizard.checkAnalyticsProvider">
+			
+			<!--start divs for top menu and header-->
+			<div class="wizard_menu">
+				<p><a class="header" onclick="pion.widgets.Wizard.exitEarly()" href="#">Advanced Configuration</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+			<!--end divs for top menu and header-->
+			
+			<div class="wizard_content">
+			<h1>Connect to Your Web Analytics Provider</h1>
+			<h2>Please select your provider (optional)</h2>
+			<div id="select_analytics_provider_form" dojoType="dijit.form.Form">
+				<p>
+				<input type="radio" name="analytics_provider" value="Google" dojoType="dijit.form.RadioButton" /><label>${google_label}</label>
+				</p>
+				<p>
+				<input type="radio" name="analytics_provider" value="Omniture" dojoType="dijit.form.RadioButton" /><label>${omniture_label}</label>
+				</p>
+				<p>
+				<input type="radio" name="analytics_provider" value="Unica" dojoType="dijit.form.RadioButton" /><label>${unica_label}</label>
+				</p>
+				<p>
+				<input type="radio" name="analytics_provider" value="Webtrends" dojoType="dijit.form.RadioButton" /><label>${webtrends_label}</label>
+				</p>
+				<p>
+				<input type="radio" name="analytics_provider" value="none" dojoType="dijit.form.RadioButton" checked /><label>${no_analytics_provider}</label>
+				</p>
+				<!--
+				<br />
+				<button dojoType=dijit.form.Button onClick="pion.widgets.Wizard.skipAnalyticsProvider">Skip Web Analytics Provider for Now</button>
+				-->
+			</div>
+			</div>
+			
+			<p class="next_button" style="display: none">Next Step: Enter Your Account Information >></p>
+		</div>
+		<!--End Web Analytics Provider Selection-->
+		
+		<!--Start Omniture Configuration-->
+		<div dojoType="dojox.widget.WizardPane" id="omniture_pane" passFunction="pion.widgets.Wizard.checkOmnitureConfig">
+			
+			<!--start divs for top menu and header-->
+			<div class="wizard_menu">
+				<p><a class="header" onclick="pion.widgets.Wizard.exitEarly()" href="#">Advanced Configuration</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+			<!--end divs for top menu and header-->
+			
+			<div class="wizard_content">
+			<h1>Connect to Your Web Analytics Provider</h1>
+			<h2>Please enter your Omniture account information (required)</h2>
+			<p>Omniture Host: 
+			<input dojoType="dijit.form.TextBox" id="omniture_host" style="width: 50%;" />
+			e.g. example.112.2o7.net
+			</p>
+			<p>Report Suite: 
+			<input dojoType="dijit.form.TextBox" id="omniture_report_suite" style="width: 50%;" />
+			</p>
+			<p><input id='omniture_strip_cip_checkbox' dojoType="dijit.form.CheckBox" type="checkBox" value="StripClientIP" /> Remove client IP addresses</p>
+			<p><em>Please note:</em> If you are an existing Omniture customer, please create a <em>new</em>
+				report suite to use with Pion.  Your traffic may be double-counted when using both
+				Pion and Omniture's page tags to populate the same report suite.</p>
+			</div>
+			<p class="prev_button" style="display: none" returnPane="analytics_provider_pane"><< Go Back</p>
+			<p class="next_button" style="display: none">Next Step: Select Capture Devices >></p>
+		</div>
+		<!--End Omniture Configuration-->
+
+		<!--Start Webtrends Configuration-->
+		<div dojoType="dojox.widget.WizardPane" id="webtrends_pane" passFunction="pion.widgets.Wizard.checkWebtrendsConfig">
+			
+			<!--start divs for top menu and header-->
+			<div class="wizard_menu">
+				<p><a class="header" onclick="pion.widgets.Wizard.exitEarly()" href="#">Advanced Configuration</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+			<!--end divs for top menu and header-->
+
+			<div class="wizard_content">
+			<h1>Connect to Your Web Analytics Provider</h1>
+			<h2>Please enter your Webtrends account information (required)</h2>
+			<p>Account ID: 
+			<input dojoType="dijit.form.TextBox" id="webtrends_account_id" style="width: 50%;" />
+			</p>
+			<p>Host: 
+			<input dojoType="dijit.form.TextBox" id="webtrends_host" style="width: 50%;" />
+			</p>
+			<p><input id='webtrends_strip_cip_checkbox' dojoType="dijit.form.CheckBox" type="checkBox" value="StripClientIP" /> Remove client IP addresses</p>
+			<p><em>Please note:</em> If you are an existing Webtrends customer, please create a <em>new</em>
+				report suite to use with Pion.  Your traffic may be double-counted when using both
+				Pion and Webtrend's page tags to populate the same report suite.</p>
+			</div>
+			<p class="prev_button" style="display: none" returnPane="analytics_provider_pane"><< Go Back</p>
+			<p class="next_button" style="display: none">Next Step: Select Capture Devices >></p>
+		</div>
+		<!--End Webtrends Configuration-->
+		
+		<!--Start Google Analytics Configuration-->
+		<div dojoType="dojox.widget.WizardPane" id="google_pane" passFunction="pion.widgets.Wizard.checkGoogleConfig">
+			
+			<!--start divs for top menu and header-->
+			<div class="wizard_menu">
+				<p><a class="header" onclick="pion.widgets.Wizard.exitEarly()" href="#">Advanced Configuration</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+			<!--end divs for top menu and header-->
+			
+			<div class="wizard_content">
+			<h1>Connect to Your Web Analytics Provider</h1>
+			<h2>Please enter your Google Analytics account information (required)</h2>
+			<p>Web Property ID: 
+			<input dojoType="dijit.form.TextBox" id="google_account_id" style="width: 50%;" />
+			e.g. UA-123456-0
+			</p>
+			<p><input id='google_strip_cip_checkbox' dojoType="dijit.form.CheckBox" type="checkBox" value="StripClientIP" /> Remove client IP addresses</p>
+			<p><a href="http://pion.org/node/202" target="_blank">FAQ: How does Pion interface with my Google Analytics account?</a></p>
+			<p><em>Please note:</em> 
+			If you have an existing Google Analytics implementation using page tags,
+			we recommend that you add a new Website Profile for use with Pion. If
+			you do not create a new Website Profile then you must remove your page
+			tags to avoid double-counting your web traffic.</p>
+			</div>
+			<p class="prev_button" style="display: none" returnPane="analytics_provider_pane"><< Go Back</p>
+			<p class="next_button" style="display: none">Next Step: Select Capture Devices >></p>
+		</div>
+		<!--End Google Analytics Configuration-->
+		
+		<!--Start Unica Configuration-->
+		<div dojoType="dojox.widget.WizardPane" id="unica_pane" passFunction="pion.widgets.Wizard.checkUnicaConfig">
+			
+			<!--start divs for top menu and header-->
+			<div class="wizard_menu">
+				<p><a class="header" onclick="pion.widgets.Wizard.exitEarly()" href="#">Advanced Configuration</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+			<!--end divs for top menu and header-->
+			
+			<div class="wizard_content">
+			<h1>Connect to Your Web Analytics Provider</h1>
+			<h2>Please enter your Unica account information (required)</h2>
+			<p>Site: 
+			<input dojoType="dijit.form.TextBox" id="unica_account_id" style="width: 50%;" />
+			</p>
+			<p>Unica Host: 
+			<input dojoType="dijit.form.TextBox" id="unica_host" style="width: 50%;" />
+			e.g. myaccount.unica.com
+			</p>
+			<p><input id='unica_strip_cip_checkbox' dojoType="dijit.form.CheckBox" type="checkBox" value="StripClientIP" /> Remove client IP addresses</p>
+			<p><em>Please note:</em> If you are an existing Unica customer, please create a <em>new</em>
+				report suite to use with Pion.  Your traffic may be double-counted when using both
+				Pion and Unica's page tags to populate the same report suite.</p>
+			</div>
+			<p class="prev_button" style="display: none" returnPane="analytics_provider_pane"><< Go Back</p>
+			<p class="next_button" style="display: none">Next Step: Select Capture Devices >></p>
+		</div>
+		<!--End Unica Configuration-->
+		
+		<!--Start Capture Devices-->
+		<div dojoType="dojox.widget.WizardPane" id="capture_devices_pane" passFunction="pion.widgets.Wizard.checkCaptureDevices">
+			<!--start divs for top menu and header-->
+			<div class="wizard_menu">
+				<p><a class="header" onclick="pion.widgets.Wizard.exitEarly()" href="#">Advanced Configuration</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+			<!--end divs for top menu and header-->
+			
+			<div class="wizard_content">
+				<h1>Select Capture Devices</h1>
+				<h2>Please select all network devices you would like Pion to use to capture web traffic</h2>
+				<div id="device_list_div" class="device_list">
+					<div id="device_list" dojoType="dijit.form.Form">
+					</div>
+				</div>
+				<div jsId="device_list_standby" dojoType="dojox.widget.Standby" target="device_list_div">
+				</div>
+			</div>
+			<p class="prev_button" style="display: none" returnPane="analytics_provider_pane"><< Go Back</p>
+			<p class="next_button" style="display: none">Next Step: Configure Ports >></p>
+		</div>
+		<!--End Capture Devices-->
+		
+		<!--Start Ports-->
+		<div dojoType="dojox.widget.WizardPane" id="port_configuration_pane" passFunction="pion.widgets.Wizard.checkPorts">
+			<!--start divs for top menu and header-->
+			<div class="wizard_menu">
+				<p><a class="header" onclick="pion.widgets.Wizard.exitEarly()" href="#">Advanced Configuration</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+			<!--end divs for top menu and header-->
+			<div class="wizard_content">
+			<h1>Configure Ports</h1>
+			<h2>Please enter the port numbers used by your web servers</h2>
+			The prepopulated ports of 80 (non-encrypted) and 443 (encrypted) are the standard defaults for most systems.
+			If your port numbers are different, or if you have additional ports, you can add, edit and remove them here, using commas to separate multiple ports.
+			<div id="port_list" dojoType="dijit.form.Form">
+				<label>Ports: </label>
+				<input dojoType="dijit.form.TextBox" name="ports" value="80, 443" style="width: 80%;" />
+			</div>
+			</div>
+			<p class="next_button" style="display: none">Next Step: Setup SSL Keys >></p>
+		</div>
+		<!--End Ports-->
+		
+		<!--Start SSL Keys-->
+		<div dojoType="dojox.widget.WizardPane" id="ssl_key_pane" passFunction="pion.widgets.Wizard.checkSSLKeys">
+			<!--start divs for top menu and header-->
+			<div class="wizard_menu">
+				<p><a class="header" onclick="pion.widgets.Wizard.exitEarly()" href="#">Advanced Configuration</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+			<!--end divs for top menu and header-->
+			
+			<div class="wizard_content">
+				<h1>Setup SSL Keys</h1>
+				SSL keys are used by the web server to encrypt and decrypt secure traffic.  Pion protects your keys in an encrypted database.
+				<div id="key_store_editor">
+				</div>
+			</div>
+			<p class="next_button" style="display: none">Next Step: I'm Done Adding Keys >></p>
+		</div>
+		
+		<!--Start Replay Configuration-->
+		<div dojoType="dojox.widget.WizardPane" id="replay_setup_pane" passFunction="pion.widgets.Wizard.checkReplaySetup">
+			<!--start divs for top menu and header-->
+			<div class="wizard_menu">
+				<p><a class="header" onclick="pion.widgets.Wizard.exitEarly()" href="#">Advanced Configuration</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+			<!--end divs for top menu and header-->
+			
+			<div class="wizard_content">
+			<h1>Setup Pion Replay</h1>
+			<h2>Please Enter Disk Allocation</h2>
+			The more disk space you can allocate, the more user sessions Pion Replay can store for viewing.
+			A disk allocation of at least 25 GB is normally recommended.
+			<div id="replay_setup" dojoType="dijit.form.Form">
+				<label>Maximum disk usage (in GB):</label>
+				<input dojoType="dijit.form.TextBox" name="max_disk_usage" value="100" />
+			</div>
+			</div>
+			<p class="next_button" style="display: none">Next Step: Sample Dashboards >></p>
+		</div>
+		<!--End Replay Configuration-->
+		
+		<!--Start Sample Dashboard Selection-->
+		<div dojoType="dojox.widget.WizardPane" id="dashboard_pane" passFunction="pion.widgets.Wizard.checkDashboardSelection">
+			
+			<!--start divs for top menu and header-->
+			<div class="wizard_menu">
+				<p><a class="header" onclick="pion.widgets.Wizard.exitEarly()" href="#">Advanced Configuration</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+			<!--end divs for top menu and header-->
+			
+			<div class="wizard_content">
+				<h1>Create Sample Dashboards</h1>
+				<h2>Please select any sample dashboards you would like to have automatically created.</h2>
+				<div id="dashboard_selection_form" dojoType="dijit.form.Form">
+					<p>
+					<input type="radio" name="dashboard_check_boxes" value="Activity" dojoType="dijit.form.CheckBox" checked /><label>Activity</label>
+					</p>
+					<p>
+					<input type="radio" name="dashboard_check_boxes" value="Availability" dojoType="dijit.form.CheckBox" checked /><label>Availability</label>
+					</p>
+					<p>
+					<input type="radio" name="dashboard_check_boxes" value="Performance" dojoType="dijit.form.CheckBox" checked /><label>Performance</label>
+					</p>
+				</div>
+			</div>
+			
+			<p class="prev_button_lite" style="display: none" returnPane="ssl_key_pane"><< Go Back</p>
+			<p class="prev_button_enterprise" style="display: none" returnPane="ssl_key_pane"><< Go Back</p>
+			<p class="prev_button_replay" style="display: none" returnPane="replay_setup_pane"><< Go Back</p>
+			<p class="next_button" style="display: none">Next Step: Review and Save >></p>
+		</div>
+		<!--End Sample Dashboard Selection-->
+		
+		<!--Start Confirmation Page-->
+		<div dojoType="dojox.widget.WizardPane" id="review_setup">
+			<!--start divs for top menu and header-->
+			<div class="wizard_menu">
+				<p><a class="header" onclick="pion.widgets.Wizard.exitEarly()" href="#">Advanced Configuration</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					<a class="header" href="http://pion.org/docs" target="_blank">Help</a>
+				</p>
+			</div>
+			
+			<div class="wizard_header_logo">
+				<img src="../images/logo-pion-wizard.png">
+			</div>
+			
+			<div class="wizard_header_title">
+				Easy Setup Wizard
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+			<!--end divs for top menu and header-->
+			
+			<div class="wizard_content">
+				<h1>Setup Wizard Complete</h1>
+				<h2>The following configuration is ready to be created:</h2>
+				<div id="setup_review_form" dojoType="dijit.form.Form" style="height: 210px; overflow: scroll; border: 1px solid #cccccc;">
+					<table width="100%">
+						<tr>
+							<td width="110"><label>Edition:</label></td>
+							<td width="200" id="setup_review_form_edition" />
+							<td><label>Web Site:</label></td>
+							<td id="setup_review_form_web_site" />
+						</tr><tr>
+							<td width="110"><label>Web Analytics:</label></td>
+							<td width="200" id="setup_review_form_web_analytics" />
+							<td><label>Cookies:</label></td>
+							<td id="setup_review_form_cookies" />
+						</tr><tr>
+							<td><label>Capture Devices:</label></td>
+							<td id="setup_review_form_devices" />
+							<td><label>Ports:</label></td>
+							<td id="setup_review_form_ports" />
+						</tr><tr>
+							<td><label>SSL Keys:</label></td>
+							<td id="setup_review_form_ssl_keys" />
+							<td><label>Replay Allocation:</label></td>
+							<td id="setup_review_form_replay_alloc" />
+						</tr><tr>
+							<td><label>Dashboards:</label></td>
+							<td id="setup_review_form_dashboards" />
+						</tr>
+					</table>
+				</div>
+			</div>
+			<p class="prev_button_lite" style="display: none" returnPane="ssl_key_pane"><< Go Back</p>
+			<p class="prev_button_enterprise" style="display: none" returnPane="dashboard_pane"><< Go Back</p>
+			<p class="prev_button_replay" style="display: none" returnPane="dashboard_pane"><< Go Back</p>
+			<p class="done_button" style="display: none">Final Step: Save Configuration</p>
+		</div>
+		<!--End Confirmation Screen-->
+	</div>
+
+	<div id="outer" style="visibility: hidden">
+		<div id="topBar">
+			<!-- start header -->
+			<div id="logo">
+				<p class="logo"><img src="images/logo-pion-no-edition.png" width="263" height="46" alt="Pion" /></p>
+				<p class="logo hidden core"><img src="images/logo-pion-core.png" width="263" height="46" alt="Pion Core" /></p>
+				<p class="logo hidden lite"><img src="images/logo-pion-lite.png" width="263" height="46" alt="Pion Lite" /></p>
+				<p class="logo hidden enterprise"><img src="images/logo-pion-enterprise.png" width="263" height="46" alt="Pion Enterprise" /></p>
+				<p class="logo hidden replay"><img src="images/logo-pion-replay.png" width="263" height="46" alt="Pion Replay" /></p>
+				<!-- start secondary menu -->
+				<div id="secondaryMenu">
+					<p>
+						<span id="current_user_menu_section" style="visibility: hidden">
+							<span class="username_in_header">Welcome,</span>
+							<span id="current_user" class="username_in_header">
+								nobody
+							</span>
+							&nbsp;&nbsp;|&nbsp;&nbsp;
+						</span>
+						<span id="wizard_menu_section" style="visibility: hidden">
+							<a class="header" href="#" onclick="pion.widgets.Wizard.restart()">Wizard</a>
+							&nbsp;&nbsp;|&nbsp;&nbsp;
+						</span>
+						<a class="header" href="http://pion.org/docs" target="_blank">Documentation</a>
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+						<a class="header" href="#" onclick="pion.about.doDialog()">About</a>
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+						<a class="header" href="#" onclick="pion.login.logout()">Logout</a>
+
+						<!-- use the 'expire' button to simulate a session timing out -->
+						<!--
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+						<button dojoType=dijit.form.Button onClick="pion.login.expire">expire</button>
+						-->
+					</p>
+				</div>
+				<!-- end secondary menu -->
+				<img src="images/0.gif" alt="" id="fixed" />
+				<div style="clear: both"></div>
+				<!-- start main menu -->
+				<div id="menu">
+					<span dojoType="dijit.layout.StackController" containerId="main_stack_container" id="main_stack_controller"></span>
+				</div>
+				<!-- end main menu -->
+
+			</div>
+			<!-- end header -->
+		</div>
+
+		<div id="main_stack_container" dojoType="dijit.layout.StackContainer" style="width: 100%; height: 100%">
+			<div id="reactor_config" dojoType="dijit.layout.BorderContainer" gutters="false" design="sidebar" title="Reactors" style="width: 95%;">
+				<!-- start left sidebar -->
+				<div id="side" dojoType="dijit.layout.ContentPane" region="left" style="overflow:hidden">
+					<div id="sidebarContainer" dojoType="dijit.layout.BorderContainer" gutters="false">
+						<div id="sidebarTop" dojoType="dijit.layout.ContentPane" region="top">
+							<div class="sidebarHeader">Reactor Types</div>
+							<div class="sidebarInstructions">
+								Drag reactors onto Workspace
+							</div>
+						</div>
+						<div id="sidebarBottom" dojoType="dijit.layout.ContentPane" region="bottom">
+							<div class="sidebarHeader">Connect Reactors</div>
+							<div class="sidebarInstructions">
+								Drag to connect Reactors
+							</div>
+							<div class="sidebar">
+								<div dojoType="dojo.dnd.Source" class="connectorBucket" copyOnly="true">
+									<div class="dojoDndItem" dndType="connector" reactor_type="connector"><img src="images/icon-connector.png" width="148" height="25" alt="Connector" /></div>
+								</div>
+							</div>
+						</div>
+						<div id="sidebarMain" dojoType="dijit.layout.ContentPane" region="center">
+							<div dojoType="dijit.layout.AccordionContainer" class="sidebar" duration="200" style="height: 100%; overflow: auto">
+								<div dojoType="dijit.layout.ContentPane" class="collection" selected="true" title="Collection Reactors">
+									<div jsId="collectionReactors" dojoType="dojo.dnd.Source" class="reactorBucket" copyOnly="true" accept="nothing"></div>
+								</div>
+								<div dojoType="dijit.layout.ContentPane" class="processing" title="Processing Reactors">
+									<div jsId="processingReactors" dojoType="dojo.dnd.Source" class="reactorBucket" copyOnly="true" accept="nothing"></div>
+								</div>
+								<div dojoType="dijit.layout.ContentPane" class="storage" title="Storage Reactors">
+									<div jsId="storageReactors" dojoType="dojo.dnd.Source" class="reactorBucket" copyOnly="true" accept="nothing"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end left sidebar -->
+				<div id="workspace_config_header" dojoType="dijit.layout.ContentPane" region="top">
+					<div dojoType="pion.widgets.MainStackContentHeader" title="Reactor Configuration" help="plugins/reactors"></div>
+					<h4>
+						1. Drag Reactor types onto Workspace&nbsp;&nbsp;&nbsp;&nbsp;
+						2. Double-click to define	&nbsp;&nbsp;&nbsp;&nbsp;
+						3. Drag arrows to connect Reactors
+					</h4>
+				</div>
+				<div id="counterBackground">
+					<span class="counterTitle">Operations per Second</span>
+					<span class="counterNumbersLeft">
+						Global:<br />
+						Workspace:
+					</span><span class="counterNumbersRight">
+						<span id="global_ops"></span><br />
+						<span id="workspace_ops"></span>
+					</span><span class="counterToggle"><button id="ops_toggle_button" dojoType=dijit.form.ToggleButton></button></span>
+				</div>
+
+				<!-- start tabbed workspaces -->
+				<div id="reactor_config_content" class="config_content" dojoType="dijit.layout.ContentPane" region="center">
+					<div id="mainTabContainer" dojoType="dijit.layout.TabContainer" tabPosition="bottom">
+						<div id="new_workspace_tab" dojoType="dijit.layout.ContentPane" title="Add new workspace">
+						</div>
+					</div>
+				</div>
+				<!-- end tabbed workspaces -->
+			</div>
+			<div id="vocab_config" dojoType="dijit.layout.ContentPane" title="Vocabularies" style="width: 95%;">
+				<div dojoType="pion.widgets.MainStackContentHeader" title="Vocabulary Configuration" help="docs/vocabularies"></div>
+				<div class="config_content">
+					<div id="vocab_config_accordion" dojoType="pion.widgets.ConfigAccordion">
+						<div dojoType="dijit.layout.ContentPane"></div>
+					</div>
+					<div>
+						<button id="add_new_vocab_button" dojoType=dijit.form.Button class="add_new_pane">ADD A NEW VOCABULARY</button>
+					</div>
+				</div>
+				<div id="vocab_config_end"></div>
+			</div>
+			<div id="codec_config" dojoType="dijit.layout.ContentPane" title="Codecs" style="width: 95%;">
+				<div dojoType="pion.widgets.MainStackContentHeader" title="Codec Configuration" help="plugins/codecs"></div>
+				<div class="config_content">
+					<div id="codec_config_accordion" dojoType="pion.widgets.ConfigAccordion">
+						<div dojoType="dijit.layout.ContentPane"></div>
+					</div>
+					<div>
+						<button id="add_new_codec_button" dojoType=dijit.form.Button class="add_new_pane">ADD A NEW CODEC</button>
+					</div>
+				</div>
+				<div id="codec_config_end" class="zero_height_end_marker"></div>
+			</div>
+			<div id="database_config" dojoType="dijit.layout.ContentPane" title="Databases" style="width: 95%;">
+				<div dojoType="pion.widgets.MainStackContentHeader" title="Database Configuration" help="plugins/databases"></div>
+				<div class="config_content">
+					<div id="database_config_accordion" dojoType="pion.widgets.ConfigAccordion">
+						<div dojoType="dijit.layout.ContentPane"></div>
+					</div>
+					<div>
+						<button id="add_new_database_button" dojoType=dijit.form.Button class="add_new_pane">ADD A NEW DATABASE</button>
+					</div>
+				</div>
+				<div id="database_config_end" class="zero_height_end_marker"></div>
+			</div>
+			<div id="protocol_config" dojoType="dijit.layout.ContentPane" title="Protocols" style="width: 95%;">
+				<div dojoType="pion.widgets.MainStackContentHeader" title="Protocol Configuration" help="plugins/protocols"></div>
+				<div class="config_content">
+					<div id="protocol_config_accordion" dojoType="pion.widgets.ConfigAccordion">
+						<div dojoType="dijit.layout.ContentPane"></div>
+					</div>
+					<div>
+						<button id="add_new_protocol_button" dojoType=dijit.form.Button class="add_new_pane">ADD A NEW PROTOCOL</button>
+					</div>
+				</div>
+				<div id="protocol_config_end" class="zero_height_end_marker"></div>
+			</div>
+
+			<!--Start Users-->
+			<div id="user_config" dojoType="dijit.layout.ContentPane" title="Users" style="width: 95%;">
+				<div dojoType="pion.widgets.MainStackContentHeader" title="Users Configuration" help="docs/users"></div>
+				<div class="config_content">
+					<div id="user_config_accordion" dojoType="pion.widgets.ConfigAccordion">
+						<div dojoType="dijit.layout.ContentPane"></div>
+					</div>
+					<div>
+						<button id="add_new_user_button" dojoType=dijit.form.Button class="add_new_pane">ADD A NEW USER</button>
+					</div>
+				</div>
+				<div id="user_config_end" class="zero_height_end_marker"></div>
+			</div>
+			<!--End Users-->
+
+			<!--Start System-->
+			<div id="system_config" dojoType="dijit.layout.ContentPane" title="System" style="width: 95%; height: 300px">
+				<div dojoType="dijit.layout.BorderContainer" gutters="false">
+					<div dojoType="dijit.layout.ContentPane" region="top">
+						<div dojoType="pion.widgets.MainStackContentHeader" title="System Configuration"></div>
+					</div>
+					<div dojoType="dijit.layout.ContentPane" region="left" style="width: 50%; padding: 10px;" splitter="true" minSize="100">
+						<div dojoType="pion.widgets.MainStackContentHeader" class="nested" title="Configuration Files"></div>
+						<hr />
+						<table cellpadding="5" border="0" class="pathsTable" width="100%">
+							<tr>
+								<td align="right" width="80px"><label>Platform</label></td>
+								<td id="platform_conf_file">your/path/here/PlatformConfigFile.xml</td>
+							</tr><tr>
+								<td align="right"><label>Reactors</label></td>
+								<td id="reactor_conf_file">your/path/here/ReactorsConfigFile.xml</td>
+							</tr><tr>
+								<td align="right"><label>Vocabularies</label></td>
+								<td id="vocab_conf_file">your/path/here/VocabulariesConfigFile.xml</td>
+							</tr><tr>
+								<td align="right"><label>Codecs</label></td>
+								<td id="codec_conf_file">your/path/here/CodecsConfigFile.xml</td>
+							</tr><tr>
+								<td align="right"><label>Databases</label></td>
+								<td id="database_conf_file">your/path/here/DatabasesConfigFile.xml</td>
+							</tr><tr>
+								<td align="right"><label>Protocols</label></td>
+								<td id="protocol_conf_file">your/path/here/ProtocolsConfigFile.xml</td>
+							</tr><tr>
+								<td align="right"><label>Users</label></td>
+								<td id="user_conf_file">your/path/here/UsersConfigFile.xml</td>
+							</tr><tr>
+								<td align="right"><label>Services</label></td>
+								<td id="service_conf_file">your/path/here/ServicesConfigFile.xml</td>
+							</tr><tr>
+								<td align="right"><label>Logging</label></td>
+								<td id="log_conf_file">your/path/here/logconfig.txt</td>
+							</tr>
+						</table>
+						<br />
+						<button dojoType=dijit.form.Button class="content_button" onClick="pion.system.importXMLConfiguration">Import XML Configuration</button>
+						<br />
+						<h2>Configuration Paths</h2>
+						<hr />
+						<table cellpadding="5" border="0" class="pathsTable" width="100%">
+							<tr>
+								<td align="right" width="80px"><label>Vocabularies</label></td>
+								<td id="vocab_path">your/path/here/VocabularyPath</td>
+							</tr><tr>
+								<td align="right" width="80px"><label>Data Directory</label></td>
+								<td id="data_directory">your/path/here/DataDirectory</td>
+							</tr>
+						</table>
+						<br />
+						<h2>Plugin Paths</h2>
+						<hr />
+						<table id="plugin_paths" cellpadding="5" border="0" class="pathsTable" width="100%">
+							<tr>
+								<td align="right" width="80px"><label>Plugin 1</label></td>
+								<td>your/path/here/PluginPath</td>
+							</tr>
+						</table>
+					</div>
+					<div dojoType="dijit.layout.ContentPane" region="center" style="padding: 10px;" minSize="100">
+						<div dojoType="pion.widgets.MainStackContentHeader" class="nested" title="Services" help="plugins/services"></div>
+						<hr/>
+						<!-- relevant class names start with dijitTree (e.g., in tundra.css) -->
+						<div id="server_tree"></div>
+					</div>
+				</div>
+			</div>
+			<!--End System-->
+		</div>
+		<div style="clear:both;"></div>
+		<div jsId="init_services_standby" dojoType="dojox.widget.Standby" target="main_stack_container">
+		</div>
+		<div id="bottomBar">
+			<div id="footer">
+				<p>&copy; 2007-2012 <a href="http://www.atomiclabs.com" target="_blank" class="header">Atomic Labs, Inc.</a> All rights reserved.</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

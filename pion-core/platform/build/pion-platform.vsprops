@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="pion-platform"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories="&quot;$(PION_PLATFORM_HOME)\include&quot;"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		AdditionalDependencies="libxml2.lib rpcrt4.lib"
+	/>
+</VisualStudioPropertySheet>

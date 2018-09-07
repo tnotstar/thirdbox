@@ -1,0 +1,19 @@
+{
+	required_input: [
+		'AgentId',
+		'AgentKey',
+		'StripClientIP'
+	],
+	option_defaults: {
+		EncryptConnections: true,
+		StripClientIP: true
+	},
+	value_defaults: {
+		Name: 'CloudMeter',
+		NumConnections: 4,
+		NumRetries: 1,
+		ProxyPort: 80,
+		DebugLogLevel: 0
+	},
+}
+ 

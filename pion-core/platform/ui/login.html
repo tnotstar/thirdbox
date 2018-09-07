@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Pion&reg;, Rule Your Data</title>
+<script language="javascript">AC_FL_RunContent = 0;</script>
+<script src="scripts/AC_RunActiveContent.js" language="javascript"></script>
+<link href="styles/splash.css" rel="stylesheet" type="text/css" media="screen" />
+<script language="javascript">
+	function init_hidden_url() {
+		if (window.location.search) {
+			if (results = window.location.search.match(/^\?pathname=(.*)$/)) {
+				document.getElementById('hidden_url').value = results[1];
+			} else if (results = window.location.search.match(/^(\?.*)&pathname=(.*)$/)) {
+				document.getElementById('hidden_url').value = results[2] + results[1];
+			} else {
+				document.getElementById('hidden_url').value = '/' + window.location.search;
+			}
+		} else {
+			document.getElementById('hidden_url').value = '/';
+		}
+	}
+</script>
+</head>
+<body bgcolor="#ffffff" onload="init_hidden_url()">
+
+
+	<div class="loginBox">
+	<div class="leftCol">
+	<img src="images/logo-pion-wizard.png" width="129" height="58">
+	</div>
+	<div class="rigthCol">
+		<form method="POST" action="/login">
+			<input id="hidden_url" type="hidden" name="url" value="/">
+			<table cellpadding="5" cellspacing="5" border="0">
+				<tr>
+					<td align="right" nowrap>Username</td>
+					<td align="right"><input type="text" name="user" id="user"></td>
+				</tr><tr>
+					<td align="right">Password</td>
+					<td align="right"><input type="password" name="pass">
+				</tr><tr>
+					<td align="right" colspan="2"><input type="image" src="images/button-sign-in-off.png" alt="Sign In"
+						onclick="document.cookie = 'user=' + encodeURIComponent(document.getElementById('user').value);">
+						<br />
+						<p>&copy 2007-2012 <a href="http://www.atomiclabs.com" target="_blank">Atomic Labs, Inc.</a> All rights reserved.</p>
+					</td>
+				</tr>
+			</table>
+		</form>
+		</div>
+
+</body>
+</html>

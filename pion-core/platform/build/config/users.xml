@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PionConfig xmlns="http://purl.org/pion/config" pion_version="4.0.13">
+	<User id="pion">
+		<Password>5f493757a8d897bf46f73413f54e8e6afb1d6186</Password>
+		<Permission type="Admin" />
+	</User>
+</PionConfig>

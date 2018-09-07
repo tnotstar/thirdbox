@@ -1,0 +1,45 @@
+<div class='user_pane' dojoAttachPoint='containerNode'
+	><form dojoAttachPoint="form" dojoType="dijit.form.Form"
+		><br/
+		><div
+			><div style="float: left"
+				><table cellpadding="5" cellspacing="0" border="0" width="275px"
+					><tr
+						><td><label>Username</label></td
+						><td><input dojoType="dijit.form.TextBox" name="@id" disabled="true"/></td
+					></tr><tr
+						><td><label>Last name</label></td
+						><td><input dojoType="dijit.form.TextBox" name="LastName"/></td
+					></tr><tr
+						><td><label>First name</label></td
+						><td><input dojoType="dijit.form.TextBox" name="FirstName"/></td
+					></tr><tr
+						><td><label>Password</label></td
+						><td><input dojoType="dijit.form.TextBox" name="Password" type="password"/></td
+					></tr
+				></table
+			></div
+			><div style="float: right" dojoAttachPoint="service_permissions"
+			></div
+			><div style="float: right; margin-right: 50px"
+				><input dojoType="dijit.form.CheckBox" name="tab_check_boxes" value="Admin" dojoAttachPoint="admin_check_box" /><label>Administrator</label><br /
+				><span class="group_label">Reactor Workspaces</span><br /
+				><div class="single_indent" dojoAttachPoint="reactors_unrestricted"
+					><input dojoType="dijit.form.CheckBox" name="workspace_check_box_group" value="Unrestricted" dojoAttachPoint="reactors_unrestricted_check_box" /><label>Unrestricted</label><br /
+				></div 
+				><input dojoType="dijit.form.CheckBox" name="tab_check_boxes" value="Vocabularies" dojoAttachPoint="vocabularies_check_box" /><label>Vocabularies</label><br /
+				><input dojoType="dijit.form.CheckBox" name="tab_check_boxes" value="Codecs" dojoAttachPoint="codecs_check_box" /><label>Codecs</label><br /
+				><input dojoType="dijit.form.CheckBox" name="tab_check_boxes" value="Databases" dojoAttachPoint="databases_check_box" /><label>Databases</label><br /
+				><input dojoType="dijit.form.CheckBox" name="tab_check_boxes" value="Protocols" dojoAttachPoint="protocols_check_box" /><label>Protocols</label><br /
+			></div
+			><div style="clear: both"></div
+		></div
+		><hr noshade="noshade" size="1" color="#999999"
+		><div class="save_cancel_delete"
+			><button dojoType=dijit.form.Button class="save" dojoAttachEvent="onClick:save">Save Changes</button
+			><button dojoType=dijit.form.Button class="cancel" dojoAttachEvent="onClick:cancel">Cancel Changes</button
+			><button dojoType=dijit.form.Button class="delete" dojoAttachEvent="onClick:delete2">Delete User</button
+		></div
+	></form
+	><div dojoAttachPoint="pane_end" class="zero_height_end_marker"></div
+></div>

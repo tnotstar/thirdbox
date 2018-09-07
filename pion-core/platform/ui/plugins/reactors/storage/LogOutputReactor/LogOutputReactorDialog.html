@@ -1,0 +1,55 @@
+<div class="dijitDialog reactor_dialog">
+	<div dojoAttachPoint="titleBar" class="dijitDialogTitleBar" tabindex="0" waiRole="dialog">
+		<span dojoAttachPoint="titleNode" class="dijitDialogTitle">Log Output Reactor Configuration</span>
+		<span dojoAttachPoint="closeButtonNode" class="dijitDialogCloseIcon" dojoAttachEvent="onclick: onCancel">
+			<span dojoAttachPoint="closeText" class="closeText">x</span>
+		</span>
+	</div>
+	<div dojoAttachPoint="containerNode" class="dijitDialogPaneContent storage">
+		<!--start div to set padding for top half of dialog-->
+		<div class="reactor_dialog_top">
+
+			<div dojoType=plugins.reactors.ReactorBoilerplate
+				 label="Log Output Reactor" name="LogOutputReactor" category="Storage"
+				 description="Write real-time data out to a structured file.">
+			</div>
+
+			<!--start reactor settings-->
+			<table
+				><tr
+					><td><label>Name:</label></td
+					><td><input dojoType="dijit.form.TextBox" name="Name" class="name_text_box"/></td
+				></tr><tr
+					><td><label>ID:</label></td
+					><td><input dojoType="dijit.form.TextBox" name="@id" class="id_text_box" disabled="true"/></td
+				></tr><tr
+					><td><label>Comments:</label></td
+					><td><input dojoType="dijit.form.TextBox" name="Comment" class="comment_text_box"/></td
+				></tr><tr
+					><td><label>Codec:</label></td
+					><td><input dojoType="pion.widgets.SimpleSelect" name="Codec" store="pion.codecs.config_store" searchAttr="Name"/></td
+				></tr><tr
+					><td><label>Filename:</label></td
+					><td><input dojoType="dijit.form.TextBox" name="Filename"/></td
+				></tr
+			></table>
+			<!--end reactor settings-->
+
+		</div>
+		<!--end div to set padding for top half of dialog-->
+
+		<!--start div to set padding for bottom half of dialog-->
+		<div class="reactor_dialog_bottom">
+
+			<!--start buttons-->
+			<div class="save_cancel_delete">
+				<button dojoType=dijit.form.Button class="save" type="submit">Save</button>
+				<button dojoType=dijit.form.Button class="cancel">Cancel</button>
+			</div>
+			<!--end buttons--> 
+
+		</div>
+		<!--end div to set padding for bottom half of dialog-->
+
+	</div>
+</div>
