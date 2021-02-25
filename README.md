@@ -1,4 +1,4 @@
-# This is my `thirdbox` Repository
+# This is my `thirdstar` Repository
 
 This repo contains a bunch of third party legacy projects, imported via `git subtree`, as is. Current list include the following ones:
 
@@ -12,8 +12,8 @@ This repo contains a bunch of third party legacy projects, imported via `git sub
 
   * [ulib] A snapshot of the original **ulib** project from <https://code.google.com/archive/p/ulib>.
 
-[msinttypes]: https://github.com/tnotstar/thirdbox/tree/master/msinttypes
-[pion-core]: https://github.com/tnotstar/thirdbox/tree/master/pion-core
-[pycalcstats]: https://github.com/tnotstar/thirdbox/tree/master/pycalcstats
-[python-statlib]: https://github.com/tnotstar/thirdbox/tree/master/python-statlib
-[ulib]: https://github.com/tnotstar/thirdbox/tree/master/ulib
+[msinttypes]: https://github.com/tnotstar/thirdstar/tree/master/msinttypes
+[pion-core]: https://github.com/tnotstar/thirdstar/tree/master/pion-core
+[pycalcstats]: https://github.com/tnotstar/thirdstar/tree/master/pycalcstats
+[python-statlib]: https://github.com/tnotstar/thirdstar/tree/master/python-statlib
+[ulib]: https://github.com/tnotstar/thirdstar/tree/master/ulib
